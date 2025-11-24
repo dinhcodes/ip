@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.List;
 
 public class Simon {
     private static ArrayList<Task> tasks = new ArrayList<>();
@@ -18,6 +17,11 @@ public class Simon {
             if (command.equals("bye")) {
                 Simon.bye();
                 break;
+            }
+
+            if (command.equals("list")) {
+                Simon.listTasks();
+                continue;
             }
 
             Simon.addTask(command);
@@ -44,7 +48,7 @@ public class Simon {
     }
 
     private static void listTasks() {
-        StringBuilder taskList = new StringBuilder("Here are the tasks in your list:\n");
+        StringBuilder taskList = new StringBuilder("");
         for (int i = 0; i < tasks.size(); i++) {
             taskList.append((i + 1) + ". " + tasks.get(i).getTaskName() + "\n");
         }
