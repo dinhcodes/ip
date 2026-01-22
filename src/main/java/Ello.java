@@ -3,17 +3,6 @@ package main.java;
 import java.util.Scanner;
 
 public class Ello {
-    public static String NAME = "Ello";
-    public static String LINE = "____________________________________________________________";
-    public static String LOGO =
-            " _______  ___      ___      _______ \n"
-                    + "|       ||   |    |   |    |       |\n"
-                    + "|    ___||   |    |   |    |   _   |\n"
-                    + "|   |___ |   |    |   |    |  | |  |\n"
-                    + "|    ___||   |___ |   |___ |  |_|  |\n"
-                    + "|   |___ |       ||       ||       |\n"
-                    + "|_______||_______||_______||_______|";
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         greet();
@@ -33,7 +22,7 @@ public class Ello {
     }
 
     private static void greet() {
-        String greetMessage = String.format("Hello! I am %s\nWhat can I do for you?", NAME);
+        String greetMessage = String.format("Hello! I am %s\nWhat can I do for you?", AppConstants.NAME);
         System.out.println(Utils.wrapWithLine(greetMessage));
     }
 

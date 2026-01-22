@@ -5,7 +5,6 @@ public class Utils {
     }
 
     public static String wrapWithLine(String message) {
-        String LINE = "____________________________________________________________";
-        return LINE + "\n" + message + "\n" + LINE;
+        return AppConstants.LINE + "\n" + message + "\n" + AppConstants.LINE;
     }
 }
