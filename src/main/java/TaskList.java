@@ -62,6 +62,15 @@ public class TaskList {
         throw new IllegalArgumentException("Invalid command.");
     }
 
+    public Task getOneBasedIndex(int oneBasedIndex) {
+        int zeroBasedIndex = oneBasedIndex - 1;
+        if (zeroBasedIndex < 0 || zeroBasedIndex >= size()) {
+            throw new IndexOutOfBoundsException("Task index out of bounds.");
+        } else {
+            return tasks.get(zeroBasedIndex);
+        }
+    }
+
     public int size() {
         return tasks.size();
     }

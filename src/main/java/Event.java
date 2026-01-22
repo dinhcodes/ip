@@ -11,19 +11,18 @@ public class Event extends Task {
     }
 
     public static Event createTaskFromCommandArgs(String args) {
-        String s = args == null ? "" : args.trim();
         String fromToken = "/from";
         String toToken = "/to";
 
-        int fi = s.indexOf(fromToken);
-        int ti = s.indexOf(toToken);
+        int fi = args.indexOf(fromToken);
+        int ti = args.indexOf(toToken);
         if (fi == -1 || ti == -1 || ti < fi) {
             throw new IllegalArgumentException("Invalid command. Usage: event <desc> /from <from> /to <to>");
         }
 
-        String desc = s.substring(0, fi).trim();
-        String from = s.substring(fi + fromToken.length(), ti).trim();
-        String to = s.substring(ti + toToken.length()).trim();
+        String desc = args.substring(0, fi).trim();
+        String from = args.substring(fi + fromToken.length(), ti).trim();
+        String to = args.substring(ti + toToken.length()).trim();
         if (desc.isEmpty() || from.isEmpty() || to.isEmpty()) {
             throw new IllegalArgumentException("Invalid command. Usa: event <desc> /from <from> /to <to>");
         }

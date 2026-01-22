@@ -17,6 +17,10 @@ public abstract class Task {
         this.isDone = true;
     }
 
+    public void markAsUndone() {
+        this.isDone = false;
+    }
+
     public Task returnTaskFromCommandArgs(String command) {
         return this;
     }

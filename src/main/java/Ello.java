@@ -25,9 +25,10 @@ public class Ello {
                 taskList.listTasks();
                 break;
             case "":
-                throw new IllegalArgumentException("Empty command.");
+                emptyCommand();
+                break;
             default:
-                addTask(command);
+                processTaskCommands(command);
                 break;
         }
     }
@@ -42,17 +43,57 @@ public class Ello {
         System.out.println(Utils.wrapWithLine(emptyCommandMessage));
     }
 
-    private static void addTask(String command) {
+    private static void processTaskCommands(String command) {
         try {
-            Task added = taskList.addFromCommand(command);
-            String addTaskString = String.format(
-                    "Got it. I've added this task:\n%s\n%s",
-                    added,
-                    enumerateTasks());
-            System.out.println(Utils.wrapWithLine(addTaskString));
+            if (command.startsWith("mark")) {
+                markTask(command);
+                return;
+            }
+
+            if (command.startsWith("unmark")) {
+                unmarkTask(command);
+                return;
+            }
+
+            addTask(command);
         } catch (IllegalArgumentException e) {
             unknownCommand();
         }
+    }
+
+    private static void addTask(String command) {
+        Task added = taskList.addFromCommand(command);
+        String addTaskString = String.format(
+                "Got it. I've added this task:\n%s\n%s",
+                added,
+                enumerateTasks());
+        System.out.println(Utils.wrapWithLine(addTaskString));
+    }
+
+    private static void unmarkTask(String command) {
+        Task t = getTaskFromTaskCommand(command, "unmark");
+        t.markAsUndone();
+        String msg = "OK, I've marked this task as not done yet:\n  " + t;
+        System.out.println(Utils.wrapWithLine(msg));
+    }
+
+    private static void markTask(String command) {
+        Task t = getTaskFromTaskCommand(command, "mark");
+        t.markAsDone();
+        String msg = "Nice! I've marked this task as done:\n  " + t;
+        System.out.println(Utils.wrapWithLine(msg));
+        return;
+    }
+
+    private static Task getTaskFromTaskCommand(String command, String commandType) {
+        String indexText = Utils.extractTask(command, commandType).trim();
+        int oneBased;
+        try {
+            oneBased = Integer.parseInt(indexText);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid task index.");
+        }
+        return taskList.getOneBasedIndex(oneBased);
     }
 
     private static String enumerateTasks() {
