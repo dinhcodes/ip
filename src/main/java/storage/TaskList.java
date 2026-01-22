@@ -1,4 +1,10 @@
-package main.java;
+package main.java.storage;
+
+import main.java.task.Deadline;
+import main.java.task.Event;
+import main.java.task.Task;
+import main.java.task.Todo;
+import main.java.util.Utils;
 
 import java.util.ArrayList;
 
@@ -71,7 +77,23 @@ public class TaskList {
         }
     }
 
+    public Task getTask(int zeroBasedIndex) {
+        return getOneBasedIndex(zeroBasedIndex + 1);
+    }
+
     public int size() {
         return tasks.size();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tasks.size(); i++) {
+            sb.append((i + 1) + ". " + tasks.get(i));
+            if (i != tasks.size() - 1) {
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
     }
 }
