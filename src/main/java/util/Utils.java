@@ -1,5 +1,7 @@
 package main.java.util;
 
+import main.java.exception.InvalidCommandException;
+
 public class Utils {
     private Utils() {
     }
@@ -12,12 +14,12 @@ public class Utils {
         return fullCommand.substring(commandStart.length() + 1);
     }
 
-    public static int extractIndex(String fullCommand, String commandStart) throws IllegalArgumentException {
+    public static int extractIndex(String fullCommand, String commandStart) {
         String indexStr = fullCommand.substring(commandStart.length() + 1).trim();
         try {
             return Integer.parseInt(indexStr) - 1; // Convert to zero-based index
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid index: " + indexStr);
+            throw new InvalidCommandException("Invalid index: " + indexStr);
         }
     }
 }

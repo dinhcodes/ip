@@ -1,7 +1,9 @@
 package main.java.task;
 
+import main.java.exception.InvalidCommandException;
+
 public class Deadline extends Task {
-    private String by;
+    private final String by;
 
     public Deadline(String description, String by) {
         super(description);
@@ -9,18 +11,23 @@ public class Deadline extends Task {
     }
 
     public static Deadline createTaskFromCommandArgs(String args) {
-        String byToken = "/by";
 
+        String byToken = "/by";
         int i = args.indexOf(byToken);
         if (i == -1) {
-            throw new IllegalArgumentException("Invalid command. Usage: deadline <desc> /by <by>");
+            throw new InvalidCommandException("Deadline lacks a /by date. Usage: deadline <desc> /by <by>");
         }
 
         String desc = args.substring(0, i).trim();
         String by = args.substring(i + byToken.length()).trim();
-        if (desc.isEmpty() || by.isEmpty()) {
-            throw new IllegalArgumentException("Invalid command. Usage: deadline <desc> /by <by>");
+
+        if (desc.isEmpty()) {
+            throw new InvalidCommandException("Deadline description cannot be empty. Usage: deadline <desc> /by <by>");
         }
+        if (by.isEmpty()) {
+            throw new InvalidCommandException("Deadline /by date cannot be empty. Usage: deadline <desc> /by <by>");
+        }
+
         return new Deadline(desc, by);
     }
 

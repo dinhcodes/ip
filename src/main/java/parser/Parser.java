@@ -1,5 +1,7 @@
 package main.java.parser;
 import main.java.command.*;
+import main.java.exception.EmptyCommandException;
+import main.java.exception.InvalidCommandException;
 import main.java.util.Utils;
 
 public class Parser {
@@ -18,9 +20,18 @@ public class Parser {
             int index = Utils.extractIndex(fullCommand, "unmark");
             return new MarkCommand(index, false);
         }
-        if (fullCommand.startsWith("todo") || fullCommand.startsWith("deadline") || fullCommand.startsWith("event")) {
+        if (fullCommand.startsWith("todo ") || fullCommand.startsWith("deadline ") || fullCommand.startsWith("event ")) {
             return new AddTaskCommand(fullCommand);
         }
-        throw new IllegalArgumentException("I'm sorry, but I don't know what that means.");
+        parseFullCommandErrors(fullCommand);
+        return null;
+    }
+
+    // Helper method to handle parsing errors
+    private static void parseFullCommandErrors(String fullCommand) {
+        if (fullCommand.isEmpty() || fullCommand.trim().isEmpty()) {
+            throw new EmptyCommandException();
+        }
+        throw new InvalidCommandException();
     }
 }

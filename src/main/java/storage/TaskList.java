@@ -1,5 +1,6 @@
 package main.java.storage;
 
+import main.java.exception.InvalidCommandException;
 import main.java.task.Deadline;
 import main.java.task.Event;
 import main.java.task.Task;
@@ -9,27 +10,10 @@ import main.java.util.Utils;
 import java.util.ArrayList;
 
 public class TaskList {
-    private ArrayList<Task> tasks = new ArrayList<>();
+    private final ArrayList<Task> tasks = new ArrayList<>();
 
     public void add(Task task) {
         tasks.add(task);
-    }
-
-    public void listTasks() {
-        if (tasks.isEmpty()) {
-            System.out.println(Utils.wrapWithLine("No hay tareas todavía."));
-            return;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= tasks.size(); i++) {
-            String taskString = String.format("%d. %s", i, tasks.get(i - 1));
-            sb.append(taskString);
-            if (i != tasks.size()) {
-                sb.append("\n");
-            }
-        }
-        System.out.println(Utils.wrapWithLine(sb.toString()));
     }
 
     /**
@@ -50,22 +34,21 @@ public class TaskList {
      * Create a {@link Task} based on the command prefix.
      */
     private Task categorizeTask(String command) {
-        if (command.startsWith("todo")) {
+        if (command.startsWith("todo ")) {
             String args = Utils.extractTask(command, "todo").trim();
             return Todo.createTaskFromCommandArgs(args);
         }
 
-        if (command.startsWith("deadline")) {
+        if (command.startsWith("deadline ")) {
             String args = Utils.extractTask(command, "deadline").trim();
             return Deadline.createTaskFromCommandArgs(args);
         }
 
-        if (command.startsWith("event")) {
+        if (command.startsWith("event ")) {
             String args = Utils.extractTask(command, "event").trim();
             return Event.createTaskFromCommandArgs(args);
         }
-
-        throw new IllegalArgumentException("Invalid command.");
+        throw new InvalidCommandException();
     }
 
     public Task getOneBasedIndex(int oneBasedIndex) {

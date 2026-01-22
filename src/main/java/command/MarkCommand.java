@@ -1,5 +1,6 @@
 package main.java.command;
 
+import main.java.exception.InvalidCommandException;
 import main.java.task.Task;
 import main.java.storage.TaskList;
 import main.java.ui.Ui;
@@ -15,7 +16,12 @@ public class MarkCommand implements Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui) {
-        Task task = taskList.getTask(index);
+        Task task;
+        try {
+            task = taskList.getTask(index);
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidCommandException("Task index " + (index + 1) + " out of bounds. Please provide a valid task number.");
+        }
         if (isDone) {
             task.markAsDone();
             ui.showMessage("Nice! I've marked this task as done:\n  " + task);

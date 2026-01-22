@@ -20,11 +20,7 @@ public abstract class Task {
     public void markAsUndone() {
         this.isDone = false;
     }
-
-    public Task returnTaskFromCommandArgs(String command) {
-        return this;
-    }
-
+    
     /** Returns detailed text that comes after the description, for example: date **/
     protected String detailsSuffix() {
         return "";

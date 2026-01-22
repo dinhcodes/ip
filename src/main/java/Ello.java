@@ -1,6 +1,8 @@
 package main.java;
 
 import main.java.command.Command;
+import main.java.exception.ElloException;
+import main.java.exception.InvalidCommandException;
 import main.java.parser.Parser;
 import main.java.storage.TaskList;
 import main.java.ui.Ui;
@@ -19,8 +21,10 @@ public class Ello {
                 Command command = Parser.parse(fullCommand);
                 command.execute(taskList, ui);
                 isExit = command.isExit();
-            } catch (IllegalArgumentException e) {
+            } catch (ElloException e) {
                 ui.showError(e.getMessage());
+            } catch (Exception e) {
+                ui.showError("An unexpected error occurred: " + e.getMessage());
             }
         }
     }
