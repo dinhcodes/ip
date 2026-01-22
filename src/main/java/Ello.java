@@ -1,19 +1,19 @@
 package main.java;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ello {
-    private static ArrayList<String> listOfTasks = new ArrayList<String>();
+    private static final TaskList taskList = new TaskList();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         greet();
-        String command = scanner.nextLine();
+
+        String command = scanner.nextLine().trim();
 
         while (!command.equals("bye")) {
             processCommand(command);
-            command = scanner.nextLine();
+            command = scanner.nextLine().trim();
         }
 
         bye();
@@ -22,8 +22,10 @@ public class Ello {
     private static void processCommand(String command) {
         switch (command) {
             case "list":
-                listTasks();
+                taskList.listTasks();
                 break;
+            case "":
+                throw new IllegalArgumentException("Empty command.");
             default:
                 addTask(command);
                 break;
@@ -31,26 +33,30 @@ public class Ello {
     }
 
     private static void unknownCommand() {
-        String unknownCommandMessage = String.format("I'm sorry, but I don't know what that means.");
+        String unknownCommandMessage = "I'm sorry, but I don't know what that means.";
         System.out.println(Utils.wrapWithLine(unknownCommandMessage));
     }
 
-    private static void addTask(String command) {
-        listOfTasks.add(command);
-        String addTaskString = String.format("added: %s", command);
-        System.out.println(Utils.wrapWithLine(addTaskString));
+    private static void emptyCommand() {
+        String emptyCommandMessage = "The command cannot be empty.";
+        System.out.println(Utils.wrapWithLine(emptyCommandMessage));
     }
 
-    private static void listTasks() {
-        StringBuilder sb = new StringBuilder("");
-        for (int i = 1; i <= listOfTasks.size(); i++) {
-            String taskString = String.format("%d. %s", i, listOfTasks.get(i - 1));
-            sb.append(taskString);
-            if (i != listOfTasks.size()) {
-                sb.append("\n");
-            }
+    private static void addTask(String command) {
+        try {
+            Task added = taskList.addFromCommand(command);
+            String addTaskString = String.format(
+                    "Got it. I've added this task:\n%s\n%s",
+                    added,
+                    enumerateTasks());
+            System.out.println(Utils.wrapWithLine(addTaskString));
+        } catch (IllegalArgumentException e) {
+            unknownCommand();
         }
-        System.out.println(Utils.wrapWithLine(sb.toString()));
+    }
+
+    private static String enumerateTasks() {
+        return String.format("Now you have %d tasks in the list.", taskList.size());
     }
 
     private static void greet() {
@@ -59,7 +65,7 @@ public class Ello {
     }
 
     private static void bye() {
-        String byeMessage = String.format("Bye. Hope to see you again soon!");
+        String byeMessage = "Bye. Hope to see you again soon!";
         System.out.println(Utils.wrapWithLine(byeMessage));
     }
 
