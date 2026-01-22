@@ -27,6 +27,14 @@ public class Ui {
         showMessage(goodbyeMessage);
     }
 
+    public String countTasks(int count) {
+        assert(count >= 0) : "Task count should not be negative.";
+        if (count == 1) {
+            return "Now you have 1 task in the list.";
+        }
+        return "Now you have " + count + " tasks in the list.";
+    }
+
     public void showError(String errorMessage) {
         showMessage(errorMessage);
     }

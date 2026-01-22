@@ -1,11 +1,8 @@
 package main.java.storage;
 
-import main.java.exception.InvalidCommandException;
-import main.java.task.Deadline;
-import main.java.task.Event;
+import main.java.exception.TaskIndexOutOfBoundsException;
 import main.java.task.Task;
-import main.java.task.Todo;
-import main.java.util.Utils;
+import main.java.parser.TaskParser;
 
 import java.util.ArrayList;
 
@@ -24,44 +21,21 @@ public class TaskList {
      * - deadline <desc> /by <by>
      * - event <desc> /from <from> /to <to>
      */
-    public Task addFromCommand(String command) {
-        Task task = categorizeTask(command);
-        add(task);
-        return task;
+
+    public void deleteFromIndex(int zeroBasedIndex) {
+        if (zeroBasedIndex < 0 || zeroBasedIndex >= size()) {
+            throw new TaskIndexOutOfBoundsException(zeroBasedIndex + 1);
+        } else {
+            tasks.remove(zeroBasedIndex);
+        }
     }
 
-    /**
-     * Create a {@link Task} based on the command prefix.
-     */
-    private Task categorizeTask(String command) {
-        if (command.startsWith("todo ")) {
-            String args = Utils.extractTask(command, "todo").trim();
-            return Todo.createTaskFromCommandArgs(args);
-        }
-
-        if (command.startsWith("deadline ")) {
-            String args = Utils.extractTask(command, "deadline").trim();
-            return Deadline.createTaskFromCommandArgs(args);
-        }
-
-        if (command.startsWith("event ")) {
-            String args = Utils.extractTask(command, "event").trim();
-            return Event.createTaskFromCommandArgs(args);
-        }
-        throw new InvalidCommandException();
-    }
-
-    public Task getOneBasedIndex(int oneBasedIndex) {
-        int zeroBasedIndex = oneBasedIndex - 1;
+    public Task getTask(int zeroBasedIndex) {
         if (zeroBasedIndex < 0 || zeroBasedIndex >= size()) {
             throw new IndexOutOfBoundsException("Task index out of bounds.");
         } else {
             return tasks.get(zeroBasedIndex);
         }
-    }
-
-    public Task getTask(int zeroBasedIndex) {
-        return getOneBasedIndex(zeroBasedIndex + 1);
     }
 
     public int size() {

@@ -2,8 +2,7 @@ package main.java;
 
 import main.java.command.Command;
 import main.java.exception.ElloException;
-import main.java.exception.InvalidCommandException;
-import main.java.parser.Parser;
+import main.java.parser.CommandParser;
 import main.java.storage.TaskList;
 import main.java.ui.Ui;
 
@@ -18,7 +17,7 @@ public class Ello {
         while (!isExit) {
             try {
                 String fullCommand = ui.readCommand();
-                Command command = Parser.parse(fullCommand);
+                Command command = CommandParser.parse(fullCommand);
                 command.execute(taskList, ui);
                 isExit = command.isExit();
             } catch (ElloException e) {
