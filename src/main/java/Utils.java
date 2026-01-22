@@ -7,4 +7,8 @@ public class Utils {
     public static String wrapWithLine(String message) {
         return AppConstants.LINE + "\n" + message + "\n" + AppConstants.LINE;
     }
+
+    public static String extractTask(String fullCommand, String commandStart) {
+        return fullCommand.substring(commandStart.length() + 1);
+    }
 }
