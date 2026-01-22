@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ello {
-    private static ArrayList<String> listOfTasks = new ArrayList<String>();
+    private static ArrayList<Task> listOfTasks = new ArrayList<Task>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -25,8 +25,36 @@ public class Ello {
                 listTasks();
                 break;
             default:
-                addTask(command);
+                processTaskCommand(command);
                 break;
+        }
+    }
+    
+    private static void processTaskCommand(String command) {
+        if (command.startsWith("mark ")) {
+            int n = parseIndex(Utils.extractTask(command, "mark"));
+            Task t = listOfTasks.get(n - 1).markDone();
+            String msg = "Nice! I've marked this task as done:\n  " + t.toString();
+            System.out.println(Utils.wrapWithLine(msg));
+            return;
+        }
+
+        if (command.startsWith("unmark ")) {
+            int n = parseIndex(Utils.extractTask(command, "unmark"));
+            Task t = listOfTasks.get(n - 1).markUndone();
+            String msg = "OK, I've marked this task as not done yet:\n  " + t.toString();
+            System.out.println(Utils.wrapWithLine(msg));
+            return;
+        }
+
+        addTask(command);
+    }
+
+    private static int parseIndex(String indexString) {
+        try {
+            return Integer.parseInt(indexString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid task index: " + indexString);
         }
     }
 
@@ -36,7 +64,7 @@ public class Ello {
     }
 
     private static void addTask(String command) {
-        listOfTasks.add(command);
+        listOfTasks.add(new Task(command));
         String addTaskString = String.format("added: %s", command);
         System.out.println(Utils.wrapWithLine(addTaskString));
     }
@@ -53,6 +81,14 @@ public class Ello {
         System.out.println(Utils.wrapWithLine(sb.toString()));
     }
 
+    private Task getByIndex(int index) {
+        int i = index - 1;
+        if (i < 0 || i >= listOfTasks.size()) {
+            throw new IndexOutOfBoundsException("Task index out of bounds");
+        }
+        return listOfTasks.get(i);
+    }
+
     private static void greet() {
         String greetMessage = String.format("Hello! I am %s\nWhat can I do for you?", AppConstants.NAME);
         System.out.println(Utils.wrapWithLine(greetMessage));
@@ -62,5 +98,4 @@ public class Ello {
         String byeMessage = String.format("Bye. Hope to see you again soon!");
         System.out.println(Utils.wrapWithLine(byeMessage));
     }
-
 }
