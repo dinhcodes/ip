@@ -10,10 +10,6 @@ public class Utils {
         return AppConstants.LINE + "\n" + message + "\n" + AppConstants.LINE;
     }
 
-    public static String extractTask(String fullCommand, String commandStart) {
-        return fullCommand.substring(commandStart.length() + 1).trim();
-    }
-
     public static int extractTaskIndex(String fullCommand, String commandStart) {
         String indexStr = fullCommand.substring(commandStart.length() + 1).trim();
         try {
