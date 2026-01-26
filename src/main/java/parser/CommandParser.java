@@ -8,6 +8,7 @@ import main.java.command.MarkCommand;
 import main.java.exception.EmptyCommandException;
 import main.java.exception.InvalidCommandException;
 import main.java.task.Task;
+import main.java.task.TaskType;
 import main.java.util.Utils;
 
 public class CommandParser {
@@ -28,21 +29,32 @@ public class CommandParser {
             int zeroBasedTaskIndex = Utils.extractTaskIndex(command, "unmark");
             return new MarkCommand(zeroBasedTaskIndex, false);
         }
-        if (command.startsWith("todo ") || command.startsWith("deadline ") || command.startsWith("event ")) {
-            Task addedTask = TaskParser.parseAndCreateTask(command);
-            return new AddTaskCommand(addedTask);
-        }
         if (command.startsWith("delete ")) {
             int oneBasedIndex = Utils.extractTaskIndex(command, "delete");
             return new DeleteCommand(oneBasedIndex);
         }
+
+        if (isCommandATaskTaskCommand(command)) {
+            Task addedTask = TaskParser.validateParseAndCreateTask(command);
+            return new AddTaskCommand(addedTask);
+        }
+
         parseCommandErrors(command);
         return null;
     }
 
+    private static boolean isCommandATaskTaskCommand(String command) {
+        for (TaskType type : TaskType.values()) {
+            if (command.startsWith(type.getCommandWord())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Helper method to handle parsing errors
     private static void parseCommandErrors(String command) {
-        if (command.isEmpty() || command.trim().isEmpty()) {
+        if (command.trim().isEmpty()) {
             throw new EmptyCommandException();
         }
         throw new InvalidCommandException();

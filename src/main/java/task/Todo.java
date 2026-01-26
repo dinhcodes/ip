@@ -1,18 +1,14 @@
 package main.java.task;
 
-import main.java.exception.InvalidCommandException;
+import java.util.HashMap;
 
 public class Todo extends Task {
-    public Todo(String description) {
-        super(description);
+    public Todo(String taskDescription) {
+        super(taskDescription);
     }
 
-    public static Todo createTaskFromCommandArgs(String args) {
-        String desc = args.trim();
-        if (desc.isEmpty()) {
-            throw new InvalidCommandException("Todo description cannot be empty. Usage: todo <desc>");
-        }
-        return new Todo(desc);
+    public static Todo create(String taskDescription, HashMap<String, String> markerToDescMap) {
+        return new Todo(taskDescription);
     }
 
     @Override
