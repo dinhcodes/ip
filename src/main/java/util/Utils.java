@@ -11,7 +11,7 @@ public class Utils {
     }
 
     public static String extractTask(String fullCommand, String commandStart) {
-        return fullCommand.substring(commandStart.length() + 1);
+        return fullCommand.substring(commandStart.length() + 1).trim();
     }
 
     public static int extractTaskIndex(String fullCommand, String commandStart) {
