@@ -1,6 +1,6 @@
 package main.java.exception;
 
-public class EmptyCommandException extends ElloException {
+public class EmptyCommandException extends InvalidCommandException {
     public EmptyCommandException() {
         super("Command cannot be empty.");
     }
