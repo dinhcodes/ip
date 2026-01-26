@@ -12,6 +12,11 @@ public class TaskParser {
 
     private TaskParser() {}
 
+    /**
+     * Validates, parses and creates a Task from the given command.
+     * @param command
+     * @return The created {Task}
+     */
     public static Task validateParseAndCreateTask(String command) {
         TaskType type = extractTaskType(command);
 
@@ -21,6 +26,7 @@ public class TaskParser {
 
         // Parse the markers and their descriptions
         HashMap<String, String> markerToDescMap = extractMarkerToDescMap(command, type);
+
 
         // Create event with parsed details
         return type.getTaskCreator().create(taskDescription, markerToDescMap);
