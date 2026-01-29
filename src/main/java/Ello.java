@@ -6,6 +6,9 @@ import main.java.parser.CommandParser;
 import main.java.storage.TaskList;
 import main.java.ui.Ui;
 
+/**
+ *
+ */
 public class Ello {
     private static final TaskList taskList = new TaskList();
     private static final Ui ui = new Ui();

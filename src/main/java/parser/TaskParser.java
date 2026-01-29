@@ -8,14 +8,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Represents a utility class that parses user commands to create Tasks.
+ */
 public class TaskParser {
 
-    private TaskParser() {}
+    private TaskParser() {
+    // Prevent instantiation
+    }
 
     /**
-     * Validates, parses and creates a Task from the given command.
+     * Validates, parses and creates a {@link Task} from the given command.
      * @param command
-     * @return The created {Task}
+     * @return The created {@link Task}
      */
     public static Task validateParseAndCreateTask(String command) {
         TaskType type = extractTaskType(command);
@@ -24,7 +29,7 @@ public class TaskParser {
         String taskDescription = extractDescription(command, type);
         validateTaskDescription(taskDescription, type);
 
-        // Parse the markers and their descriptions
+        // Parse the markers and their descriptions, putting them into a hashmap
         HashMap<String, String> markerToDescMap = extractMarkerToDescMap(command, type);
 
 
@@ -71,7 +76,9 @@ public class TaskParser {
         return command.substring(indexOfTaskDescriptionStart).trim();
     }
 
+    // ExtractS markers and their corresponding descriptions from the command.
     private static HashMap<String, String> extractMarkerToDescMap(String command, TaskType type) {
+        // Retrieve all markers for the given task type
         HashMap<String, String> map = new HashMap<>();
         String[] markers = type.getMarkers();
 
@@ -79,10 +86,12 @@ public class TaskParser {
             return map;
         }
 
+        // Validate that all markers are present in the command
         validateAllMarkersPresent(command, type, markers);
 
         List<String> markersWithMissingValues = new ArrayList<>();
 
+        // Extract each marker's description
         for (int i = 0; i < markers.length; i++) {
             String currentMarker = "/" + markers[i];
             int startIndex = command.indexOf(currentMarker) + currentMarker.length();
@@ -105,6 +114,7 @@ public class TaskParser {
             map.put(currentMarker, value);
         }
 
+        // Check for any markers that are missing values
         if (!markersWithMissingValues.isEmpty()) {
             throw new MissingMarkerDescException(type, markersWithMissingValues);
         }

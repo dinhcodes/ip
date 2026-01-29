@@ -1,4 +1,5 @@
 package main.java.parser;
+
 import main.java.command.Command;
 import main.java.command.AddTaskCommand;
 import main.java.command.ExitCommand;
@@ -11,6 +12,9 @@ import main.java.task.Task;
 import main.java.task.TaskType;
 import main.java.util.Utils;
 
+/**
+ * Represents a utility class that parses user commands into <code>Command</code> objects.
+ */
 public class CommandParser {
     public static Command parse(String fullCommand) {
         String command = fullCommand.trim();
@@ -33,12 +37,10 @@ public class CommandParser {
             int oneBasedIndex = Utils.extractTaskIndex(command, "delete");
             return new DeleteCommand(oneBasedIndex);
         }
-
         if (isCommandATaskTaskCommand(command)) {
             Task addedTask = TaskParser.validateParseAndCreateTask(command);
             return new AddTaskCommand(addedTask);
         }
-
         parseCommandErrors(command);
         return null;
     }
