@@ -3,7 +3,7 @@ package ello.command.exception;
 import ello.task.TaskType;
 
 /**
- * Represents an exception thrown when there is no space after the command word in a user command.
+ * Exception thrown when there is no space after the command word in a user command.
  */
 public class MissingSpaceAfterCommandWordException extends InvalidCommandException {
     /**

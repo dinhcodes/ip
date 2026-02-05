@@ -4,7 +4,7 @@ import ello.task.TaskType;
 import java.util.List;
 
 /**
- * Represents an exception thrown when a command is missing descriptions for required markers.
+ * Exception thrown when a command is missing descriptions for required markers.
  */
 public class MissingMarkerDescException extends InvalidCommandException {
     /**

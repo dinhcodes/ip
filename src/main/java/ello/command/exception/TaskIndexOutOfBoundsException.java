@@ -1,7 +1,7 @@
 package ello.command.exception;
 
 /**
- * Represents an exception thrown when a ello.task index provided by the user is out of bounds.
+ * Exception thrown when a ello.task index provided by the user is out of bounds.
  */
 public class TaskIndexOutOfBoundsException extends InvalidCommandException {
     /**

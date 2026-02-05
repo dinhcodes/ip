@@ -3,7 +3,7 @@ package ello.command.exception;
 import ello.task.TaskType;
 
 /**
- * Represents an exception thrown when a command is missing the ello.task description.
+ * Exception thrown when a command is missing the ello.task description.
  */
 public class MissingTaskDescException extends InvalidCommandException {
     /**
