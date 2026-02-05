@@ -60,7 +60,7 @@ public class TaskList {
 
     /**
      * Replaces all tasks in the list with the provided tasks.
-     * Useful for loading tasks from ello.storage.
+     * Useful for loading tasks from storage.
      *
      * @param newTasks The list of tasks to replace the current tasks with.
      */

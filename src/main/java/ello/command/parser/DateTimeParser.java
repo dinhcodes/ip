@@ -25,7 +25,8 @@ public class DateTimeParser {
      */
     private static final List<String> DATE_TIME_PATTERNS = Arrays.asList(
             "d/M/yyyy HH:mm",
-            "dd/MM/yyyy HH:mm"
+            "dd/MM/yyyy HH:mm",
+            "yyyy-mm-dd HH:mm"
     );
 
     /**
@@ -33,7 +34,8 @@ public class DateTimeParser {
      */
     private static final List<String> DATE_ONLY_PATTERNS = Arrays.asList(
             "d/M/yyyy",
-            "dd/MM/yyyy"
+            "dd/MM/yyyy",
+            "yyyy-mm-dd HH:mm"
     );
 
     private static final List<DateTimeFormatter> INPUT_FORMATS = DATE_TIME_PATTERNS.stream()

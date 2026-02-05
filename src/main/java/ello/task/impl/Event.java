@@ -19,7 +19,7 @@ public class Event extends Task {
 
     /**
      * Constructs an event {@link Task} with the given description, start time, and end time.
-     * @param taskDescription {@code String} that represents the description of the ello.task.
+     * @param taskDescription {@code String} that represents the description of the {@link Task}.
      * @param from {@code LocalDateTime} that represents the start time of the event.
      * @param to {@code LocalDateTime} that represents the end time of the event.
      */
@@ -33,9 +33,9 @@ public class Event extends Task {
      * Creates an event {@link Task} using the provided description and marker-to-description map.
      * Parses the date strings from the "/from" and "/to" markers into {@link LocalDateTime}.
      *
-     * @param taskDescription {@code String} that represents the description of the ello.task.
+     * @param taskDescription {@code String} that represents the description of the {@link Task}.
      * @param markerToDescMap {@code HashMap<String, String>} that represents markers and their corresponding descriptions.
-     * @return A new {@code Event} ello.task.
+     * @return A new {@code Event}.
      */
     public static Event create(String taskDescription, HashMap<String, String> markerToDescMap) {
         String fromString = markerToDescMap.get("from");

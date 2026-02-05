@@ -14,7 +14,7 @@ public class AddTaskCommand implements Command {
     @Override
     public void execute(TaskList taskList, Ui ui) {
         taskList.add(addedTask);
-        ui.showMessage("Got it. I've added this ello.task:\n  "
+        ui.showMessage("Got it. I've added this task:\n  "
                 + addedTask + "\n"
                 + ui.countTasks(taskList.size()));
     }

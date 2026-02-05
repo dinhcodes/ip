@@ -62,12 +62,12 @@ public class CommandParser {
     }
 
     /**
-     * Extracts the ello.task index from a full command string. Assumes that the
+     * Extracts the {@link Task} index from a full command string. Assumes that the
      * command is in the format: {@code <index> <commandStart>}.
      *
      * @param fullCommand The complete command string entered by the user.
      * @param commandStart The starting keyword of the command (e.g., "delete", "done").
-     * @return The zero-based index of the ello.task.
+     * @return The zero-based index of the {@link Task}.
      * @throws InvalidCommandException If the index is not a valid integer.
      */
     public static int extractTaskIndex(String fullCommand, String commandStart) {

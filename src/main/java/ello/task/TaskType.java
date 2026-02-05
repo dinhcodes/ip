@@ -20,9 +20,9 @@ public enum TaskType {
     private final TaskCreator taskCreator;
 
     /**
-     * Constructor for TaskType enum. Every ello.task type must have a command word, markers, and a ello.task creator.
-     * @param commandWord {@code String} that represents command word for the ello.task type.
-     * @param markers {@code String[]} that represents markers associated with the ello.task type.
+     * Constructor for {@code TaskType} enum. Every {@code TaskType} must have a command word, markers, and a ello.task creator.
+     * @param commandWord {@code String} that represents command word for the {@link TaskType}.
+     * @param markers {@code String[]} that represents markers associated with the {@link TaskType}.
      * @param taskCreator {@link TaskCreator} that creates tasks of this type.
      */
     TaskType(String commandWord, String[] markers, TaskCreator taskCreator) {
@@ -32,7 +32,7 @@ public enum TaskType {
     }
 
     /**
-     * Gets the command word associated with the ello.task type.
+     * Gets the command word associated with the task type.
      * @return {@code String} that represents the command word.
      */
     public String getCommandWord() {
@@ -40,7 +40,7 @@ public enum TaskType {
     }
 
     /**
-     * Gets the markers associated with the ello.task type.
+     * Gets the markers associated with the task type.
      * @return {@code String[]} that represents the markers.
      */
     public String[] getMarkers() {
@@ -48,7 +48,7 @@ public enum TaskType {
     }
 
     /**
-     * Gets the ello.task creator associated with the ello.task type.
+     * Gets the {@link TaskCreator} associated with the {@link TaskType}.
      * @return {@link TaskCreator} that creates tasks of this type.
      */
     public TaskCreator getTaskCreator() {
@@ -56,8 +56,8 @@ public enum TaskType {
     }
 
     /**
-     * Builds the syntax string for the ello.task type.
-     * @return {@code String} that represents the syntax for the ello.task type.
+     * Builds the syntax string for the can .
+     * @return {@code String} that represents the syntax for the task type.
      */
     public String buildSyntax() {
         String base = "Syntax: " + commandWord + " <desc>";
@@ -85,7 +85,7 @@ public enum TaskType {
                 return type;
             }
         }
-        throw new IllegalArgumentException("Unknown ello.task type: " + commandWord);
+        throw new IllegalArgumentException("Unknown task type: " + commandWord);
     }
 
     @Override

@@ -17,6 +17,10 @@ public class Todo extends Task {
         super(taskDescription);
     }
 
+    public static Todo create(String taskDescription, HashMap<String, String> markerToDescMap) {
+        return new Todo(taskDescription);
+    }
+
     @Override
     public TaskType getTaskType() {
         return TaskType.TODO;

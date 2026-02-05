@@ -8,7 +8,7 @@ public class UiConstants {
      */
     public static final String LINE = "____________________________________________________________";
 
-    public static final String WELCOME_MESSAGE = "Hello! I'm" + AppConstants.NAME + "\n"
+    public static final String WELCOME_MESSAGE = "Hello! I'm " + AppConstants.NAME + "\n"
             + "What can I do for you?";
 //            + "Type 'help' to see a list of commands.";
 
