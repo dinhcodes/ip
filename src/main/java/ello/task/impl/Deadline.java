@@ -11,6 +11,7 @@ import java.util.HashMap;
  * Represents a deadline {@link Task} with a specific due date or time.
  */
 public class Deadline extends Task {
+    /** The due date/time of the deadline. */
     private final LocalDateTime by;
 
     /**

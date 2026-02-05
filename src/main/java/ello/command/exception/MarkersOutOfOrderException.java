@@ -3,7 +3,7 @@ package ello.command.exception;
 import ello.task.TaskType;
 
 /**
- * Represents an exception thrown when the markers in a user command are out of order.
+ * Exception thrown when the markers in a user command are out of order.
  */
 public class MarkersOutOfOrderException extends InvalidCommandException {
     /**

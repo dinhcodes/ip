@@ -1,7 +1,7 @@
 package ello.command.exception;
 
 /**
- * Represents an exception thrown when a user command is empty.
+ * Exception thrown when a user command is empty.
  */
 public class EmptyCommandException extends InvalidCommandException {
     /**

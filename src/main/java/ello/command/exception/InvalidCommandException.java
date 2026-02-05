@@ -1,7 +1,7 @@
 package ello.command.exception;
 
 /**
- * Represents an exception thrown when a user enters an invalid command.
+ * Exception thrown when a user enters an invalid command.
  */
 public class InvalidCommandException extends IllegalArgumentException {
     /**
