@@ -93,4 +93,26 @@ public abstract class Task {
     public String toString() {
         return getStatusIcon() + " " + taskDescription + detailsSuffix();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Task other = (Task) obj;
+        return this.isDone == other.isDone
+                && this.taskDescription.equals(other.taskDescription)
+                && this.getMapOfMarkersAndDescription().equals(other.getMapOfMarkersAndDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = taskDescription.hashCode();
+        result = 31 * result + (isDone ? 1 : 0);
+        result = 31 * result + getMapOfMarkersAndDescription().hashCode();
+        return result;
+    }
 }

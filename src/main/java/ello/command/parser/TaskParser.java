@@ -12,11 +12,6 @@ import java.util.List;
  * Represents a utility class that parses user commands to create Tasks.
  */
 public class TaskParser {
-
-    private TaskParser() {
-    // Prevent instantiation
-    }
-
     /**
      * Validates, parses and creates a {@link Task} from the given command.
      * @param command The input command by user.
@@ -76,7 +71,7 @@ public class TaskParser {
         return command.substring(indexOfTaskDescriptionStart).trim();
     }
 
-    // ExtractS markers and their corresponding descriptions from the command.
+    // Extracts markers and their corresponding descriptions from the command.
     private static HashMap<String, String> extractMarkerToDescMap(String command, TaskType type) {
         // Retrieve all markers for the given task type
         HashMap<String, String> map = new HashMap<>();
