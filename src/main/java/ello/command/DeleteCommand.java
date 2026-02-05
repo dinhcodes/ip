@@ -1,7 +1,7 @@
 package ello.command;
 import ello.command.exception.TaskIndexOutOfBoundsException;
 import ello.ui.Ui;
-import ello.storage.TasksList;
+import ello.storage.TaskList;
 import ello.task.Task;
 
 public class DeleteCommand implements Command {
@@ -12,17 +12,17 @@ public class DeleteCommand implements Command {
     }
 
     @Override
-    public void execute(TasksList tasksList, Ui ui) {
+    public void execute(TaskList taskList, Ui ui) {
         Task task;
         try {
-            task = tasksList.getTask(taskIndex);
+            task = taskList.getTask(taskIndex);
         } catch (IndexOutOfBoundsException e) {
             throw new TaskIndexOutOfBoundsException(taskIndex + 1);
         }
-        tasksList.deleteFromIndex(taskIndex);
+        taskList.deleteFromIndex(taskIndex);
         ui.showMessage("Deleted Task\n"
                 + task + "\n"
-                + ui.countTasks(tasksList.size()));
+                + ui.countTasks(taskList.size()));
     }
 
     @Override

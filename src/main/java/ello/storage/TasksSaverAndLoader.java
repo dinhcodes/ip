@@ -66,13 +66,13 @@ public class TasksSaverAndLoader {
     }
 
     /**
-     * Saves the tasks from a {@link TasksList} to the JSON file.
+     * Saves the tasks from a {@link TaskList} to the JSON file.
      *
-     * @param tasksList The {@link Task} list to save.
+     * @param taskList The {@link Task} list to save.
      * @throws TaskSaveException if an I/O error occurs while writing.
      */
-    public void save(TasksList tasksList) {
-        save(tasksList.getTasks());
+    public void save(TaskList taskList) {
+        save(taskList.getTasks());
     }
 
     private void save(List<Task> tasks) {

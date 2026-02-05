@@ -10,11 +10,11 @@ import java.util.List;
 /**
  * Represents a list of {@link Task}s, stored in an {@code ArrayList<Task>}.
  */
-public class TasksList {
+public class TaskList {
     private final ArrayList<Task> tasks = new ArrayList<>();
 
     /**
-     * Adds a ello.task {@link Task} to the ello.task list.
+     * Adds a task {@link Task} to the {@code TaskList}.
      * @param task The {@link Task}to be added.
      */
     public void add(Task task) {
@@ -22,8 +22,8 @@ public class TasksList {
     }
 
     /**
-     * Deletes a ello.task from the ello.task list based on its zero-based index.
-     * @param zeroBasedIndex The zero-based index of the ello.task to be deleted.
+     * Deletes a {@link Task} from the {@code TaskList} based on its zero-based index.
+     * @param zeroBasedIndex The zero-based index of the {@link Task} to be deleted.
      * @throws TaskIndexOutOfBoundsException if the provided index is out of bounds.
      */
     public void deleteFromIndex(int zeroBasedIndex) {
@@ -35,8 +35,8 @@ public class TasksList {
     }
 
     /**
-     * Retrieves a ello.task from the ello.task list based on its zero-based index.
-     * @param zeroBasedIndex The zero-based index of the ello.task to be retrieved.
+     * Retrieves a {@link Task} from the {@code TaskList} based on its zero-based index.
+     * @param zeroBasedIndex The zero-based index of the {@link Task} to be retrieved.
      * @return The {@link Task} at the specified index.
      * @throws IndexOutOfBoundsException if the provided index is out of bounds.
      */
@@ -49,7 +49,7 @@ public class TasksList {
     }
 
     /**
-     * Returns an unmodifiable view of the ello.task list.
+     * Returns an unmodifiable view of the {@code TaskList}.
      * Useful for iteration and persistence operations.
      *
      * @return An unmodifiable {@code List<Task>} containing all tasks.
@@ -70,8 +70,8 @@ public class TasksList {
     }
 
     /**
-     * Returns the number of tasks in the ello.task list.
-     * @return The size of the ello.task list.
+     * Returns the number of tasks in the {@code TaskList}.
+     * @return The size of the {@code TaskList}.
      */
     public int size() {
         return tasks.size();

@@ -1,6 +1,6 @@
 package ello.service;
 
-import ello.storage.TasksList;
+import ello.storage.TaskList;
 import ello.storage.TasksSaverAndLoader;
 import ello.task.Task;
 
@@ -11,33 +11,33 @@ import java.util.List;
  * Service class that orchestrates {@link Task} loading and saving operations.
  */
 public class TaskService {
-    private final TasksList tasksList;
+    private final TaskList taskList;
     private final TasksSaverAndLoader storage;
 
     public TaskService(Path storagePath) {
-        this.tasksList = new TasksList();
+        this.taskList = new TaskList();
         this.storage = new TasksSaverAndLoader(storagePath);
     }
 
-    public TasksList getTaskList() {
-        return tasksList;
+    public TaskList getTaskList() {
+        return taskList;
     }
 
     /**
-     * Loads tasks from storage into the {@link TasksList}, using {@link TasksSaverAndLoader#load()}.
+     * Loads tasks from storage into the {@link TaskList}, using {@link TasksSaverAndLoader#load()}.
      *
      * @return The number of tasks loaded.
      */
     public int load() {
         List<Task> tasks = storage.load();
-        tasksList.replaceAll(tasks);
+        taskList.replaceAll(tasks);
         return tasks.size();
     }
 
     /**
-     * Saves the current {@link TasksList} to storage, using {@link TasksSaverAndLoader#save(TasksList)}.
+     * Saves the current {@link TaskList} to storage, using {@link TasksSaverAndLoader#save(TaskList)}.
      */
     public void save() {
-        storage.save(tasksList);
+        storage.save(taskList);
     }
 }

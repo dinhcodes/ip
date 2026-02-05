@@ -2,7 +2,7 @@ package ello.command;
 
 import ello.command.exception.InvalidCommandException;
 import ello.task.Task;
-import ello.storage.TasksList;
+import ello.storage.TaskList;
 import ello.ui.Ui;
 
 public class MarkCommand implements Command {
@@ -15,10 +15,10 @@ public class MarkCommand implements Command {
     }
 
     @Override
-    public void execute(TasksList tasksList, Ui ui) {
+    public void execute(TaskList taskList, Ui ui) {
         Task task;
         try {
-            task = tasksList.getTask(index);
+            task = taskList.getTask(index);
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidCommandException("Task index " + (index + 1) + " out of bounds. Please provide a valid ello.task number.");
         }

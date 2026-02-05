@@ -1,7 +1,7 @@
 package ello.command;
 
 import ello.task.Task;
-import ello.storage.TasksList;
+import ello.storage.TaskList;
 import ello.ui.Ui;
 
 public class AddTaskCommand implements Command {
@@ -12,11 +12,11 @@ public class AddTaskCommand implements Command {
     }
 
     @Override
-    public void execute(TasksList tasksList, Ui ui) {
-        tasksList.add(addedTask);
+    public void execute(TaskList taskList, Ui ui) {
+        taskList.add(addedTask);
         ui.showMessage("Got it. I've added this ello.task:\n  "
                 + addedTask + "\n"
-                + ui.countTasks(tasksList.size()));
+                + ui.countTasks(taskList.size()));
     }
 
     @Override
