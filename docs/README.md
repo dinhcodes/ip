@@ -1,4 +1,4 @@
-# Ello User Guide
+# ello.Ello User Guide
 
 // Update the title above to match the actual product name
 

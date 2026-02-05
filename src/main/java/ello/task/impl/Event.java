@@ -1,0 +1,86 @@
+package ello.task.impl;
+
+import ello.command.parser.DateTimeParser;
+import ello.task.Task;
+import ello.task.TaskType;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+
+/**
+ * Represents an event {@link Task} with a description, start time, and end time.
+ */
+public class Event extends Task {
+    private final LocalDateTime from;
+    private final LocalDateTime to;
+
+    /**
+     * Constructs an event {@link Task} with the given description, start time, and end time.
+     * @param taskDescription {@code String} that represents the description of the ello.task.
+     * @param from {@code LocalDateTime} that represents the start time of the event.
+     * @param to {@code LocalDateTime} that represents the end time of the event.
+     */
+    public Event(String taskDescription, LocalDateTime from, LocalDateTime to) {
+        super(taskDescription);
+        this.from = from;
+        this.to = to;
+    }
+
+    /**
+     * Creates an event {@link Task} using the provided description and marker-to-description map.
+     * Parses the date strings from the "/from" and "/to" markers into {@link LocalDateTime}.
+     *
+     * @param taskDescription {@code String} that represents the description of the ello.task.
+     * @param markerToDescMap {@code HashMap<String, String>} that represents markers and their corresponding descriptions.
+     * @return A new {@code Event} ello.task.
+     */
+    public static Event create(String taskDescription, HashMap<String, String> markerToDescMap) {
+        String fromString = markerToDescMap.get("from");
+        String toString = markerToDescMap.get("to");
+        LocalDateTime fromDateTime = DateTimeParser.parse(fromString);
+        LocalDateTime toDateTime = DateTimeParser.parse(toString);
+        return new Event(taskDescription, fromDateTime, toDateTime);
+    }
+
+    /**
+     * Gets the start date/time of the event.
+     *
+     * @return The {@link LocalDateTime} representing when this event starts.
+     */
+    public LocalDateTime getFrom() {
+        return from;
+    }
+
+    /**
+     * Gets the end date/time of the event.
+     *
+     * @return The {@link LocalDateTime} representing when this event ends.
+     */
+    public LocalDateTime getTo() {
+        return to;
+    }
+
+    @Override
+    public TaskType getTaskType() {
+        return TaskType.EVENT;
+    }
+
+    @Override
+    public HashMap<String, String> getMapOfMarkersAndDescription() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("from", from.toString());
+        map.put("to", to.toString());
+        return map;
+    }
+
+    @Override
+    protected String detailsSuffix() {
+        return String.format(" (from: %s to: %s)",
+                DateTimeParser.format(from), DateTimeParser.format(to));
+    }
+
+    @Override
+    public String toString() {
+        return "[E]" + super.toString();
+    }
+}
