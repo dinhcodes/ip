@@ -1,7 +1,7 @@
 package ello.common.exception;
 
 /**
- * Represents a custom exception class for ello.Ello application.
+ * Represents a custom exception class for Ello application.
  */
 public class ElloException extends RuntimeException {
     /**
