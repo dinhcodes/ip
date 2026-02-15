@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommandParserTest {
-
     @Test
     void parse_bye_returnsExitCommand() {
         assertInstanceOf(ExitCommand.class, CommandParser.parse("bye"));
