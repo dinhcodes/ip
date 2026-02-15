@@ -11,6 +11,28 @@ public abstract class Task {
     private boolean isDone;
 
     /**
+     * Constructs a {@code Task} with the given description.
+     *
+     * @param taskDescription {@code String} that represents the description of the {@link Task}.
+     */
+    public Task(String taskDescription) {
+        this.taskDescription = taskDescription;
+        this.isDone = false;
+    }
+
+    /**
+     * Constructs a Task with the given description and map of markers to descriptions.
+     *
+     * @param taskDescription            {@code String} that represents the description of the {@link Task}.
+     * @param mapOfMarkersAndDescription A HashMap mapping marker names to their descriptions.
+     */
+    public Task(String taskDescription, HashMap<String, String> mapOfMarkersAndDescription) {
+        this.taskDescription = taskDescription;
+        this.isDone = false;
+        this.mapOfMarkersAndDescription.putAll(mapOfMarkersAndDescription);
+    }
+
+    /**
      * Gets the {@link TaskType} of this {@link Task}.
      *
      * @return The {@link TaskType} enum value for this {@link Task}.
@@ -27,29 +49,9 @@ public abstract class Task {
         return mapOfMarkersAndDescription;
     }
 
-
-    /**
-     * Constructs a {@code Task} with the given description.
-     * @param taskDescription {@code String} that represents the description of the {@link Task}.
-     */
-    public Task(String taskDescription) {
-        this.taskDescription = taskDescription;
-        this.isDone = false;
-    }
-
-    /**
-     * Constructs a Task with the given description and map of markers to descriptions.
-     * @param taskDescription {@code String} that represents the description of the {@link Task}.
-     * @param mapOfMarkersAndDescription A HashMap mapping marker names to their descriptions.
-     */
-    public Task(String taskDescription, HashMap<String, String> mapOfMarkersAndDescription) {
-        this.taskDescription = taskDescription;
-        this.isDone = false;
-        this.mapOfMarkersAndDescription.putAll(mapOfMarkersAndDescription);
-    }
-
     /**
      * Gets the description of this {@link Task}.
+     *
      * @return The {@link Task} description.
      */
     public String getDescription() {
@@ -58,6 +60,7 @@ public abstract class Task {
 
     /**
      * Returns whether this {@link Task} is marked as done.
+     *
      * @return {@code true} if the {@link Task} is done, {@code false} otherwise.
      */
     public boolean isDone() {
@@ -79,7 +82,7 @@ public abstract class Task {
     }
 
     /**
-     *  Returns detailed text that comes after the taskDescription, for example: date
+     * Returns detailed text that comes after the taskDescription, for example: date
      */
     protected String detailsSuffix() {
         return "";

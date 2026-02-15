@@ -1,12 +1,17 @@
 package ello.command.parser;
 
-import ello.command.exception.*;
-import ello.task.Task;
-import ello.task.TaskType;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import ello.command.exception.InvalidCommandException;
+import ello.command.exception.MarkersOutOfOrderException;
+import ello.command.exception.MissingMarkerDescException;
+import ello.command.exception.MissingMarkerException;
+import ello.command.exception.MissingSpaceAfterCommandWordException;
+import ello.command.exception.MissingTaskDescException;
+import ello.task.Task;
+import ello.task.TaskType;
 
 /**
  * Represents a utility class that parses user commands to create Tasks.
@@ -14,6 +19,7 @@ import java.util.List;
 public class TaskParser {
     /**
      * Validates, parses and creates a {@link Task} from the given command.
+     *
      * @param command The input command by user.
      * @return The created {@link Task}
      */
@@ -53,7 +59,7 @@ public class TaskParser {
         }
         throw new InvalidCommandException();
     }
-    
+
     private static String extractDescription(String command, TaskType type) {
         String[] markers = type.getMarkers();
 

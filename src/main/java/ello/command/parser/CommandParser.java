@@ -1,9 +1,9 @@
 package ello.command.parser;
 
-import ello.command.Command;
 import ello.command.AddTaskCommand;
-import ello.command.ExitCommand;
+import ello.command.Command;
 import ello.command.DeleteCommand;
+import ello.command.ExitCommand;
 import ello.command.ListCommand;
 import ello.command.MarkCommand;
 import ello.command.exception.EmptyCommandException;
@@ -17,7 +17,7 @@ import ello.task.TaskType;
 public class CommandParser {
     public static Command parse(String fullCommand) {
         String command = fullCommand.trim();
-        
+
         if (command.equals("bye")) {
             return new ExitCommand();
         }
@@ -65,7 +65,7 @@ public class CommandParser {
      * Extracts the {@link Task} index from a full command string. Assumes that the
      * command is in the format: {@code <index> <commandStart>}.
      *
-     * @param fullCommand The complete command string entered by the user.
+     * @param fullCommand  The complete command string entered by the user.
      * @param commandStart The starting keyword of the command (e.g., "delete", "done").
      * @return The zero-based index of the {@link Task}.
      * @throws InvalidCommandException If the index is not a valid integer.
