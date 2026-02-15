@@ -1,14 +1,14 @@
 package ello.task;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import ello.task.impl.Deadline;
 import ello.task.impl.Event;
 import ello.task.impl.Todo;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 /**
- *
+ * Enumeration representing different types of tasks, and their required properties.
  */
 public enum TaskType {
     TODO("todo", new String[]{}, Todo::create),
@@ -20,9 +20,10 @@ public enum TaskType {
     private final TaskCreator taskCreator;
 
     /**
-     * Constructor for {@code TaskType} enum. Every {@code TaskType} must have a command word, markers, and a ello.task creator.
+     * Constructor for {@code TaskType} enum. Every {@code TaskType} must have a command word, markers, and a task creator.
+     *
      * @param commandWord {@code String} that represents command word for the {@link TaskType}.
-     * @param markers {@code String[]} that represents markers associated with the {@link TaskType}.
+     * @param markers     {@code String[]} that represents markers associated with the {@link TaskType}.
      * @param taskCreator {@link TaskCreator} that creates tasks of this type.
      */
     TaskType(String commandWord, String[] markers, TaskCreator taskCreator) {
@@ -32,7 +33,24 @@ public enum TaskType {
     }
 
     /**
+     * Finds a task type by its command word.
+     *
+     * @param commandWord The command word to search for.
+     * @return The matching task type.
+     * @throws IllegalArgumentException If no matching task type is found.
+     */
+    public static TaskType fromCommandWord(String commandWord) {
+        for (TaskType type : values()) {
+            if (type.commandWord.equals(commandWord)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown task type: " + commandWord);
+    }
+
+    /**
      * Gets the command word associated with the task type.
+     *
      * @return {@code String} that represents the command word.
      */
     public String getCommandWord() {
@@ -41,6 +59,7 @@ public enum TaskType {
 
     /**
      * Gets the markers associated with the task type.
+     *
      * @return {@code String[]} that represents the markers.
      */
     public String[] getMarkers() {
@@ -49,6 +68,7 @@ public enum TaskType {
 
     /**
      * Gets the {@link TaskCreator} associated with the {@link TaskType}.
+     *
      * @return {@link TaskCreator} that creates tasks of this type.
      */
     public TaskCreator getTaskCreator() {
@@ -57,6 +77,7 @@ public enum TaskType {
 
     /**
      * Builds the syntax string for the can .
+     *
      * @return {@code String} that represents the syntax for the task type.
      */
     public String buildSyntax() {
@@ -70,22 +91,6 @@ public enum TaskType {
                 .collect(Collectors.joining(" "));
 
         return base + " " + markersPart;
-    }
-
-    /**
-     * Finds a TaskType by its command word.
-     *
-     * @param commandWord The command word to search for.
-     * @return The matching TaskType.
-     * @throws IllegalArgumentException if no matching TaskType is found.
-     */
-    public static TaskType fromCommandWord(String commandWord) {
-        for (TaskType type : values()) {
-            if (type.commandWord.equals(commandWord)) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("Unknown task type: " + commandWord);
     }
 
     @Override

@@ -8,9 +8,13 @@ import ello.service.TaskService;
 import ello.ui.Ui;
 
 public class Ello {
-    /** The user interface component for interacting with the user. */
+    /**
+     * The user interface component for interacting with the user.
+     */
     private final Ui ui;
-    /** The service responsible for task management and persistence. */
+    /**
+     * The service responsible for task management and persistence.
+     */
     private final TaskService taskService;
 
     /**

@@ -1,10 +1,10 @@
 package ello.storage.util;
 
+import java.util.HashMap;
+
 import ello.storage.SerializableTask;
 import ello.task.Task;
 import ello.task.TaskType;
-
-import java.util.HashMap;
 
 /**
  * Utility class for converting between {@link SerializableTask} DTOs and {@link Task} objects.
@@ -15,9 +15,10 @@ public final class TaskConverter {
     }
 
     /**
-     * Converts a {@link SerializableTask} DTO to a {@link Task} object.
-     * @param dto The {@link SerializableTask} DTO to convert.
-     * @return The corresponding {@link Task} object.
+     * Converts a serializable task DTO to a task object.
+     *
+     * @param dto The serializable task DTO to convert.
+     * @return The corresponding task object.
      */
     public static Task toTask(SerializableTask dto) {
         if (dto == null) {
@@ -36,9 +37,10 @@ public final class TaskConverter {
     }
 
     /**
-     * Converts a {@link Task} object to a {@link SerializableTask} DTO.
-     * @param task The {@link Task} object to convert.
-     * @return The corresponding {@link SerializableTask} DTO.
+     * Converts a task object to a serializable task DTO.
+     *
+     * @param task The task object to convert.
+     * @return The corresponding serializable task DTO.
      */
     public static SerializableTask fromTask(Task task) {
         if (task == null) {

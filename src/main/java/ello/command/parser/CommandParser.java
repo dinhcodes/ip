@@ -1,9 +1,10 @@
 package ello.command.parser;
 
-import ello.command.Command;
 import ello.command.AddTaskCommand;
-import ello.command.ExitCommand;
+import ello.command.Command;
 import ello.command.DeleteCommand;
+import ello.command.ExitCommand;
+import ello.command.FindCommand;
 import ello.command.ListCommand;
 import ello.command.MarkCommand;
 import ello.command.exception.EmptyCommandException;
@@ -12,17 +13,21 @@ import ello.task.Task;
 import ello.task.TaskType;
 
 /**
- * Represents a utility class that parses user commands into <code>Command</code> objects.
+ * Represents a utility class that parses user commands into {@link Command} objects.
  */
 public class CommandParser {
     public static Command parse(String fullCommand) {
         String command = fullCommand.trim();
-        
+
         if (command.equals("bye")) {
             return new ExitCommand();
         }
         if (command.equals("list")) {
             return new ListCommand();
+        }
+        if (command.startsWith("find ")) {
+            String searchKeyword = command.substring(5);
+            return new FindCommand(searchKeyword);
         }
         if (command.startsWith("mark ")) {
             int zeroBasedTaskIndex = extractTaskIndex(command, "mark");
@@ -36,15 +41,15 @@ public class CommandParser {
             int oneBasedIndex = extractTaskIndex(command, "delete");
             return new DeleteCommand(oneBasedIndex);
         }
-        if (isCommandATaskTaskCommand(command)) {
-            Task addedTask = TaskParser.validateParseAndCreateTask(command);
+        if (isACreateTaskCommand(command)) {
+            Task addedTask = TaskParser.processTaskCommand(command);
             return new AddTaskCommand(addedTask);
         }
         parseCommandErrors(command);
         return parse("");
     }
 
-    private static boolean isCommandATaskTaskCommand(String command) {
+    private static boolean isACreateTaskCommand(String command) {
         for (TaskType type : TaskType.values()) {
             if (command.startsWith(type.getCommandWord())) {
                 return true;
@@ -62,12 +67,12 @@ public class CommandParser {
     }
 
     /**
-     * Extracts the {@link Task} index from a full command string. Assumes that the
-     * command is in the format: {@code <index> <commandStart>}.
+     * Extracts the task index from a full command string.
+     * Assumes that the command is in the format: {@code <commandStart> <index>}.
      *
-     * @param fullCommand The complete command string entered by the user.
-     * @param commandStart The starting keyword of the command (e.g., "delete", "done").
-     * @return The zero-based index of the {@link Task}.
+     * @param fullCommand  The complete command string entered by the user.
+     * @param commandStart The starting keyword of the command (e.g., "delete", "mark").
+     * @return The zero-based index of the task.
      * @throws InvalidCommandException If the index is not a valid integer.
      */
     public static int extractTaskIndex(String fullCommand, String commandStart) {

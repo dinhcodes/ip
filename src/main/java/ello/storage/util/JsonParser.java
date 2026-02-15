@@ -1,11 +1,11 @@
 package ello.storage.util;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * Static utility class that encapsulates a configured Gson instance.
@@ -37,12 +37,12 @@ public final class JsonParser {
     }
 
     /**
-     * Deserializes a JSON string to a List of the specified element type.
+     * Deserializes a JSON string to a list of the specified element type.
      *
      * @param <T>          The type of list elements.
      * @param json         The JSON string to deserialize.
      * @param elementClass The class of list elements.
-     * @return A List of the specified element type.
+     * @return A list of the specified element type.
      */
     public static <T> List<T> listFromJson(String json, Class<T> elementClass) {
         Type listType = TypeToken.getParameterized(List.class, elementClass).getType();

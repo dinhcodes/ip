@@ -1,43 +1,47 @@
 package ello.command.parser;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.Test;
+
 import ello.command.exception.InvalidCommandException;
 import ello.command.exception.MarkersOutOfOrderException;
 import ello.command.exception.MissingMarkerDescException;
 import ello.command.exception.MissingMarkerException;
-import ello.command.exception.MissingSpaceAfterCommandWordException;
+import ello.command.exception.MissingSpaceAfterAddTaskCommandException;
 import ello.command.exception.MissingTaskDescException;
 import ello.task.Task;
 import ello.task.impl.Deadline;
 import ello.task.impl.Event;
 import ello.task.impl.Todo;
-import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TaskParserTest {
     @Test
-    void validateParseAndCreateTask_validTodo_returnsTodo() {
-        Task task = assertDoesNotThrow(() -> TaskParser.validateParseAndCreateTask("todo buy milk"));
+    void processTask_Command_validTodo_returnsTodo() {
+        Task task = assertDoesNotThrow(() -> TaskParser.processTaskCommand("todo buy milk"));
         assertNotNull(task);
         Todo expected = new Todo("buy milk");
         assertEquals(expected, task);
     }
 
     @Test
-    void validateParseAndCreateTask_validDeadline_returnsDeadline() {
+    void processTask_Command_validDeadline_returnsDeadline() {
         Task task = assertDoesNotThrow(() ->
-                TaskParser.validateParseAndCreateTask("deadline submit report /by 2/12/2019 18:00"));
+                TaskParser.processTaskCommand("deadline submit report /by 2/12/2019 18:00"));
         assertNotNull(task);
         Deadline expected = new Deadline("submit report", LocalDateTime.of(2019, 12, 2, 18, 0));
         assertEquals(expected, task);
     }
 
     @Test
-    void validateParseAndCreateTask_validEvent_returnsEvent() {
+    void processTask_Command_validEvent_returnsEvent() {
         Task task = assertDoesNotThrow(() ->
-                TaskParser.validateParseAndCreateTask("event project meeting /from 2/12/2019 18:00 /to 2/12/2019 20:00"));
+                TaskParser.processTaskCommand("event project meeting /from 2/12/2019 18:00 /to 2/12/2019 20:00"));
         assertNotNull(task);
         Event expected = new Event("project meeting",
                 LocalDateTime.of(2019, 12, 2, 18, 0),
@@ -46,44 +50,44 @@ class TaskParserTest {
     }
 
     @Test
-    void validateParseAndCreateTask_missingDescription_throwsMissingTaskDesc() {
+    void processTask_missingDescription_throwsMissingTaskCommandDesc() {
         assertThrows(MissingTaskDescException.class,
-                () -> TaskParser.validateParseAndCreateTask("todo"));
+                () -> TaskParser.processTaskCommand("todo"));
     }
 
     @Test
-    void validateParseAndCreateTask_missingSpaceAfterCommandWord_throwsMissingSpace() {
-        assertThrows(MissingSpaceAfterCommandWordException.class,
-                () -> TaskParser.validateParseAndCreateTask("todoBuy milk"));
+    void processTask_Command_missingSpaceAfterCommandWord_throwsMissingSpace() {
+        assertThrows(MissingSpaceAfterAddTaskCommandException.class,
+                () -> TaskParser.processTaskCommand("todoBuy milk"));
     }
 
     @Test
-    void validateParseAndCreateTask_invalidCommand_throwsInvalidCommand() {
+    void processTask_Command_invalidCommand_throwsInvalidCommand() {
         assertThrows(InvalidCommandException.class,
-                () -> TaskParser.validateParseAndCreateTask("unknown task"));
+                () -> TaskParser.processTaskCommand("unknown task"));
     }
 
     @Test
-    void validateParseAndCreateTask_missingMarker_throwsMissingMarker() {
+    void processTask_Command_missingMarker_throwsMissingMarker() {
         assertThrows(MissingMarkerException.class,
-                () -> TaskParser.validateParseAndCreateTask("deadline submit report"));
+                () -> TaskParser.processTaskCommand("deadline submit report"));
     }
 
     @Test
-    void validateParseAndCreateTask_missingMarkerDesc_throwsMissingMarkerDesc() {
+    void processTask_Command_missingMarkerDesc_throwsMissingMarkerDesc() {
         assertThrows(MissingMarkerDescException.class,
-                () -> TaskParser.validateParseAndCreateTask("deadline submit report /by "));
+                () -> TaskParser.processTaskCommand("deadline submit report /by "));
     }
 
     @Test
-    void validateParseAndCreateTask_markersOutOfOrder_throwsMarkersOutOfOrder() {
+    void processTask_Command_markersOutOfOrder_throwsMarkersOutOfOrder() {
         assertThrows(MarkersOutOfOrderException.class,
-                () -> TaskParser.validateParseAndCreateTask("event meetup /to6pm /from5pm"));
+                () -> TaskParser.processTaskCommand("event meetup /to6pm /from5pm"));
     }
 
     @Test
-    void validateParseAndCreateTask_eventMissingMarkerDesc_throwsMissingMarkerDesc() {
+    void processTask_Command_eventMissingMarkerDesc_throwsMissingMarkerDesc() {
         assertThrows(MissingMarkerDescException.class,
-                () -> TaskParser.validateParseAndCreateTask("event meetup /from5pm /to "));
+                () -> TaskParser.processTaskCommand("event meetup /from5pm /to "));
     }
 }

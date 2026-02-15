@@ -11,26 +11,9 @@ public abstract class Task {
     private boolean isDone;
 
     /**
-     * Gets the {@link TaskType} of this {@link Task}.
+     * Constructs a task with the given description.
      *
-     * @return The {@link TaskType} enum value for this {@link Task}.
-     */
-    public abstract TaskType getTaskType();
-
-    /**
-     * Converts this {@link Task}'s type-specific fields to a map of marker names to string values.
-     * Used for serialization. Subclasses should override to provide their specific fields.
-     *
-     * @return A HashMap with marker names (e.g., "by", "from", "to") mapped to {@code String} values.
-     */
-    public HashMap<String, String> getMapOfMarkersAndDescription() {
-        return mapOfMarkersAndDescription;
-    }
-
-
-    /**
-     * Constructs a {@code Task} with the given description.
-     * @param taskDescription {@code String} that represents the description of the {@link Task}.
+     * @param taskDescription The description of the task.
      */
     public Task(String taskDescription) {
         this.taskDescription = taskDescription;
@@ -38,9 +21,10 @@ public abstract class Task {
     }
 
     /**
-     * Constructs a Task with the given description and map of markers to descriptions.
-     * @param taskDescription {@code String} that represents the description of the {@link Task}.
-     * @param mapOfMarkersAndDescription A HashMap mapping marker names to their descriptions.
+     * Constructs a task with the given description and map of markers to descriptions.
+     *
+     * @param taskDescription            The description of the task.
+     * @param mapOfMarkersAndDescription Mapping of marker names to their descriptions.
      */
     public Task(String taskDescription, HashMap<String, String> mapOfMarkersAndDescription) {
         this.taskDescription = taskDescription;
@@ -49,37 +33,58 @@ public abstract class Task {
     }
 
     /**
-     * Gets the description of this {@link Task}.
-     * @return The {@link Task} description.
+     * Gets the task type of this task.
+     *
+     * @return The task type enum value.
+     */
+    public abstract TaskType getTaskType();
+
+    /**
+     * Converts this task's type-specific fields to a map of marker names to string values.
+     * Used for serialization. Subclasses should override to provide their specific fields.
+     *
+     * @return A HashMap with marker names (e.g., "by", "from", "to") mapped to string values.
+     */
+    public HashMap<String, String> getMapOfMarkersAndDescription() {
+        return mapOfMarkersAndDescription;
+    }
+
+    /**
+     * Gets the description of this task.
+     *
+     * @return The task description.
      */
     public String getDescription() {
         return taskDescription;
     }
 
     /**
-     * Returns whether this {@link Task} is marked as done.
-     * @return {@code true} if the {@link Task} is done, {@code false} otherwise.
+     * Returns whether this task is marked as done.
+     *
+     * @return {@code true} if the task is done, {@code false} otherwise.
      */
     public boolean isDone() {
         return isDone;
     }
 
     /**
-     * Marks the {@link Task} as done.
+     * Marks the task as done.
      */
     public void markAsDone() {
         this.isDone = true;
     }
 
     /**
-     * Marks the {@link Task} as not done.
+     * Marks the task as not done.
      */
     public void markAsUndone() {
         this.isDone = false;
     }
 
     /**
-     *  Returns detailed text that comes after the taskDescription, for example: date
+     * Returns detailed text that comes after the task description, for example: date.
+     *
+     * @return The details suffix string.
      */
     protected String detailsSuffix() {
         return "";

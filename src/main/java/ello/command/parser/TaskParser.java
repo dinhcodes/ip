@@ -1,23 +1,29 @@
 package ello.command.parser;
 
-import ello.command.exception.*;
-import ello.task.Task;
-import ello.task.TaskType;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ello.command.exception.InvalidCommandException;
+import ello.command.exception.MarkersOutOfOrderException;
+import ello.command.exception.MissingMarkerDescException;
+import ello.command.exception.MissingMarkerException;
+import ello.command.exception.MissingSpaceAfterAddTaskCommandException;
+import ello.command.exception.MissingTaskDescException;
+import ello.task.Task;
+import ello.task.TaskType;
+
 /**
- * Represents a utility class that parses user commands to create Tasks.
+ * Utility class that parses user commands to create tasks.
  */
 public class TaskParser {
     /**
-     * Validates, parses and creates a {@link Task} from the given command.
-     * @param command The input command by user.
-     * @return The created {@link Task}
+     * Validates, parses and creates a task from the given command.
+     *
+     * @param command The input command from the user.
+     * @return The created task.
      */
-    public static Task validateParseAndCreateTask(String command) {
+    public static Task processTaskCommand(String command) {
         TaskType type = extractTaskType(command);
 
         // Parse the task description
@@ -48,12 +54,12 @@ public class TaskParser {
             }
             if (command.startsWith(type.getCommandWord())
                     && command.length() > type.getCommandWord().length()) {
-                throw new MissingSpaceAfterCommandWordException(type);
+                throw new MissingSpaceAfterAddTaskCommandException(type);
             }
         }
         throw new InvalidCommandException();
     }
-    
+
     private static String extractDescription(String command, TaskType type) {
         String[] markers = type.getMarkers();
 
@@ -71,7 +77,6 @@ public class TaskParser {
         return command.substring(indexOfTaskDescriptionStart).trim();
     }
 
-    // Extracts markers and their corresponding descriptions from the command.
     private static HashMap<String, String> extractMarkerToDescMap(String command, TaskType type) {
         // Retrieve all markers for the given task type
         HashMap<String, String> map = new HashMap<>();

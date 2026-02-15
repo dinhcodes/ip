@@ -1,29 +1,30 @@
 package ello.command;
 
-import ello.task.Task;
 import ello.storage.TaskList;
+import ello.task.Task;
 import ello.ui.Ui;
 
 /**
- * Represents a {@link Command} to add a task to the TaskList.
+ * Represents a command to add a task to the task list.
  */
 public class AddTaskCommand implements Command {
-    private final Task addedTask;
+    private final Task newTask;
 
-    public AddTaskCommand(Task addedTask) {
-        this.addedTask = addedTask;
+    public AddTaskCommand(Task newTask) {
+        this.newTask = newTask;
     }
 
     /**
-     * Executes the AddTaskCommand by adding the specified task to the TaskList
-     * @param taskList the {@link TaskList} to add the task to
-     * @param ui the {@link Ui} to display messages to the user
+     * Executes the add task command by adding the specified task to the task list.
+     *
+     * @param taskList The task list to add the task to.
+     * @param ui       The user interface for displaying messages to the user.
      */
     @Override
     public void execute(TaskList taskList, Ui ui) {
-        taskList.add(addedTask);
+        taskList.add(newTask);
         ui.showMessage("Got it. I've added this task:\n  "
-                + addedTask + "\n"
+                + newTask + "\n"
                 + ui.countTasks(taskList.size()));
     }
 

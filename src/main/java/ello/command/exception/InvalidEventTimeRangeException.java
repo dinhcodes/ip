@@ -11,7 +11,7 @@ public class InvalidEventTimeRangeException extends InvalidCommandException {
      * Constructs exception when end time is before or equal to start time.
      *
      * @param from The start date/time.
-     * @param to The end date/time.
+     * @param to   The end date/time.
      */
     public InvalidEventTimeRangeException(LocalDateTime from, LocalDateTime to) {
         super(buildMessage(from, to));

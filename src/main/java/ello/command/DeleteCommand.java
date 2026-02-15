@@ -1,17 +1,19 @@
 package ello.command;
+
 import ello.command.exception.TaskIndexOutOfBoundsException;
-import ello.ui.Ui;
 import ello.storage.TaskList;
 import ello.task.Task;
+import ello.ui.Ui;
 
 /**
- * Represents a {@link Command} to delete a task from the TaskList.
+ * Represents a command to delete a task from the task list.
  */
 public class DeleteCommand implements Command {
     private final int taskIndex;
 
     /**
-     * Creates a DeleteCommand to delete the task at the specified index.
+     * Creates a delete command to delete the task at the specified index.
+     *
      * @param taskIndex The zero-based index of the task to be deleted.
      */
     public DeleteCommand(int taskIndex) {
@@ -19,10 +21,10 @@ public class DeleteCommand implements Command {
     }
 
     /**
-     * Executes the DeleteCommand by deleting the task at the specified index from the TaskList.
+     * Executes the delete command by deleting the task at the specified index from the task list.
      *
-     * @param taskList The {@link TaskList} to operate on.
-     * @param ui The {@link Ui} for user interaction.
+     * @param taskList The task list to operate on.
+     * @param ui       The user interface for user interaction.
      */
     @Override
     public void execute(TaskList taskList, Ui ui) {

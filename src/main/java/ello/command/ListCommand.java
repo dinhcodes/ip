@@ -4,14 +4,14 @@ import ello.storage.TaskList;
 import ello.ui.Ui;
 
 /**
- * Represents a {@link Command} to list all tasks in the TaskList.
+ * Represents a command to list all tasks in the task list.
  */
 public class ListCommand implements Command {
     /**
-     * Executes the ListCommand by displaying all tasks in the TaskList.
+     * Executes the list command by displaying all tasks in the task list.
      *
-     * @param taskList The {@link TaskList} to operate on.
-     * @param ui The {@link Ui} for user interaction.
+     * @param taskList The task list to operate on.
+     * @param ui       The user interface for user interaction.
      */
     @Override
     public void execute(TaskList taskList, Ui ui) {
