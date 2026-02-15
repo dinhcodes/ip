@@ -7,12 +7,12 @@ import ello.task.TaskType;
  */
 public class MarkersOutOfOrderException extends InvalidCommandException {
     /**
-     * Constructs a {@code MarkersOutOfOrderException} with a default error message based on the ello.task type.
+     * Constructs an exception with a default error message based on the task type.
      *
-     * @param type The {@link TaskType} associated with the command.
+     * @param type The task type associated with the command.
      */
     public MarkersOutOfOrderException(TaskType type) {
         super("The markers order is incorrect. Please check the correct command syntax!\n"
-            + type.buildSyntax());
+                + type.buildSyntax());
     }
 }

@@ -1,14 +1,18 @@
 package ello.command.parser;
 
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
 import ello.command.DeleteCommand;
 import ello.command.ExitCommand;
+import ello.command.FindCommand;
 import ello.command.ListCommand;
 import ello.command.MarkCommand;
 import ello.command.exception.EmptyCommandException;
 import ello.command.exception.InvalidCommandException;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import ello.command.exception.MissingSpaceAfterCommandWordException;
 
 class CommandParserTest {
     @Test
@@ -22,18 +26,24 @@ class CommandParserTest {
     }
 
     @Test
+    void parse_find_returnsFindCommand() {
+        assertInstanceOf(FindCommand.class, CommandParser.parse("find book"));
+        assertInstanceOf(FindCommand.class, CommandParser.parse("find meeting"));
+    }
+
+    @Test
     void parse_mark_returnsMarkCommand() {
-        assertInstanceOf(MarkCommand.class, CommandParser.parse("mark2"));
+        assertInstanceOf(MarkCommand.class, CommandParser.parse("mark 2"));
     }
 
     @Test
     void parse_unmark_returnsMarkCommand() {
-        assertInstanceOf(MarkCommand.class, CommandParser.parse("unmark5"));
+        assertInstanceOf(MarkCommand.class, CommandParser.parse("unmark 5"));
     }
 
     @Test
     void parse_delete_returnsDeleteCommand() {
-        assertInstanceOf(DeleteCommand.class, CommandParser.parse("delete3"));
+        assertInstanceOf(DeleteCommand.class, CommandParser.parse("delete 3"));
     }
 
     @Test
@@ -47,14 +57,17 @@ class CommandParserTest {
     }
 
     @Test
-    void extractTaskIndex_valid_returnsZeroBased() {
-        assertEquals(1, CommandParser.extractTaskIndex("mark2", "mark"));
-        assertEquals(4, CommandParser.extractTaskIndex("delete5", "delete"));
+    void parse_findNoSpace_throwsMissingSpaceAfterCommandWordException() {
+        assertThrows(MissingSpaceAfterCommandWordException.class, () -> CommandParser.parse("findbook"));
     }
 
     @Test
-    void extractTaskIndex_invalidNumber_throwsInvalidCommandException() {
-        assertThrows(InvalidCommandException.class,
-                () -> CommandParser.extractTaskIndex("delete abc", "delete"));
+    void parse_markNoSpace_throwsMissingSpaceAfterCommandWordException() {
+        assertThrows(MissingSpaceAfterCommandWordException.class, () -> CommandParser.parse("mark2"));
+    }
+
+    @Test
+    void parse_deleteNoSpace_throwsMissingSpaceAfterCommandWordException() {
+        assertThrows(MissingSpaceAfterCommandWordException.class, () -> CommandParser.parse("delete3"));
     }
 }

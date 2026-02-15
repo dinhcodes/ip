@@ -17,34 +17,21 @@ public class DateTimeParser {
     /**
      * Output format for displaying dates: e.g., "Dec 02 2019, 6:00 PM"
      */
-    public static final DateTimeFormatter OUTPUT_FORMAT =
-            DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
+    public static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
 
     /**
      * List of supported input formats for parsing dates, in {@code String} format.
      */
-    private static final List<String> DATE_TIME_PATTERNS = Arrays.asList(
-            "d/M/yyyy HH:mm",
-            "dd/MM/yyyy HH:mm",
-            "yyyy-mm-dd HH:mm"
-    );
+    private static final List<String> DATE_TIME_PATTERNS = Arrays.asList("d/M/yyyy HH:mm", "dd/MM/yyyy HH:mm", "yyyy-mm-dd HH:mm");
 
     /**
      * Formats for date-only input (default time to 00:00).
      */
-    private static final List<String> DATE_ONLY_PATTERNS = Arrays.asList(
-            "d/M/yyyy",
-            "dd/MM/yyyy",
-            "yyyy-mm-dd HH:mm"
-    );
+    private static final List<String> DATE_ONLY_PATTERNS = Arrays.asList("d/M/yyyy", "dd/MM/yyyy", "yyyy-mm-dd HH:mm");
 
-    private static final List<DateTimeFormatter> INPUT_FORMATS = DATE_TIME_PATTERNS.stream()
-            .map(DateTimeFormatter::ofPattern)
-            .toList();
+    private static final List<DateTimeFormatter> INPUT_FORMATS = DATE_TIME_PATTERNS.stream().map(DateTimeFormatter::ofPattern).toList();
 
-    private static final List<DateTimeFormatter> DATE_ONLY_FORMATS = DATE_ONLY_PATTERNS.stream()
-            .map(DateTimeFormatter::ofPattern)
-            .toList();
+    private static final List<DateTimeFormatter> DATE_ONLY_FORMATS = DATE_ONLY_PATTERNS.stream().map(DateTimeFormatter::ofPattern).toList();
 
     /**
      * Returns a formatted string of all supported date/time formats.
@@ -84,6 +71,7 @@ public class DateTimeParser {
             try {
                 return LocalDateTime.parse(trimmed, formatter);
             } catch (DateTimeParseException e) {
+                throw new InvalidDateTimeException(dateTimeString);
             }
         }
 
@@ -92,12 +80,13 @@ public class DateTimeParser {
             try {
                 return java.time.LocalDate.parse(trimmed, formatter).atStartOfDay();
             } catch (DateTimeParseException e) {
+                throw new InvalidDateTimeException(dateTimeString);
             }
         }
 
-
         throw new InvalidDateTimeException(dateTimeString);
     }
+
 
     /**
      * Formats a {@link LocalDateTime} to a user-friendly {@code String}.

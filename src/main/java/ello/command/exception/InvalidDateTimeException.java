@@ -7,8 +7,8 @@ import ello.command.parser.DateTimeParser;
  */
 public class InvalidDateTimeException extends InvalidCommandException {
     /**
-     * Constructs a new {@code InvalidDateTimeException} with a message describing the error.
-     *i d
+     * Constructs an exception with a message describing the error.
+     *
      * @param input The invalid date/time string that could not be parsed.
      */
     public InvalidDateTimeException(String input) {

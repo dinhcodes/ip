@@ -1,16 +1,17 @@
 package ello.command.exception;
 
-import ello.task.TaskType;
+import ello.command.CommandType;
 
 /**
- * Exception thrown when there is no space after the command word in a user command.
+ * Exception thrown when there is no space after a command word in a list-related command.
  */
 public class MissingSpaceAfterCommandWordException extends InvalidCommandException {
     /**
-     * Constructs a {@code MissingSpaceAfterCommandWordException} with a default error message based on the ello.task type.
-     * @param type The {@link TaskType} associated with the command.
+     * Constructs an exception with a default error message based on the command type.
+     *
+     * @param type The command type associated with the command.
      */
-    public MissingSpaceAfterCommandWordException(TaskType type) {
+    public MissingSpaceAfterCommandWordException(CommandType type) {
         super("Please ensure there is a space after the command word: '" + type.getCommandWord() + "'\n"
                 + type.buildSyntax());
     }

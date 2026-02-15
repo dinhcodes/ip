@@ -8,7 +8,7 @@ import ello.ui.Ui;
  */
 public class ExitCommand implements Command {
     /**
-     * Executes the ExitCommand by displaying a goodbye message.
+     * Executes exit by displaying a goodbye message.
      *
      * @param taskList The {@link TaskList} to operate on.
      * @param ui       The {@link Ui} for user interaction.

@@ -8,7 +8,7 @@ import ello.storage.TasksSaverAndLoader;
 import ello.task.Task;
 
 /**
- * Service class that orchestrates {@link Task} loading and saving operations.
+ * Service class that orchestrates task loading and saving operations.
  */
 public class TaskService {
     private final TaskList taskList;
@@ -24,7 +24,7 @@ public class TaskService {
     }
 
     /**
-     * Loads tasks from storage into the {@link TaskList}, using {@link TasksSaverAndLoader#load()}.
+     * Loads tasks from storage into the task list.
      *
      * @return The number of tasks loaded.
      */
@@ -35,7 +35,7 @@ public class TaskService {
     }
 
     /**
-     * Saves the current {@link TaskList} to storage, using {@link TasksSaverAndLoader#save(TaskList)}.
+     * Saves the current task list to storage.
      */
     public void save() {
         storage.save(taskList);

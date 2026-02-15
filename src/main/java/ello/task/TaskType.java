@@ -8,7 +8,7 @@ import ello.task.impl.Event;
 import ello.task.impl.Todo;
 
 /**
- *
+ * Enumeration representing different types of tasks, and their required properties.
  */
 public enum TaskType {
     TODO("todo", new String[]{}, Todo::create),
@@ -20,7 +20,7 @@ public enum TaskType {
     private final TaskCreator taskCreator;
 
     /**
-     * Constructor for {@code TaskType} enum. Every {@code TaskType} must have a command word, markers, and a ello.task creator.
+     * Constructor for {@code TaskType} enum. Every {@code TaskType} must have a command word, markers, and a task creator.
      *
      * @param commandWord {@code String} that represents command word for the {@link TaskType}.
      * @param markers     {@code String[]} that represents markers associated with the {@link TaskType}.
@@ -33,11 +33,11 @@ public enum TaskType {
     }
 
     /**
-     * Finds a TaskType by its command word.
+     * Finds a task type by its command word.
      *
      * @param commandWord The command word to search for.
-     * @return The matching TaskType.
-     * @throws IllegalArgumentException if no matching TaskType is found.
+     * @return The matching task type.
+     * @throws IllegalArgumentException If no matching task type is found.
      */
     public static TaskType fromCommandWord(String commandWord) {
         for (TaskType type : values()) {

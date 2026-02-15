@@ -79,7 +79,7 @@ public class Event extends Task {
     /**
      * Gets the start date/time of the event.
      *
-     * @return The {@link LocalDateTime} representing when this event starts.
+     * @return The date/time when this event starts.
      */
     public LocalDateTime getFrom() {
         return from;
@@ -88,7 +88,7 @@ public class Event extends Task {
     /**
      * Gets the end date/time of the event.
      *
-     * @return The {@link LocalDateTime} representing when this event ends.
+     * @return The date/time when this event ends.
      */
     public LocalDateTime getTo() {
         return to;
