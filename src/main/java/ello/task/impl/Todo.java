@@ -1,9 +1,9 @@
 package ello.task.impl;
 
+import java.util.HashMap;
+
 import ello.task.Task;
 import ello.task.TaskType;
-
-import java.util.HashMap;
 
 /**
  * Represents a to-do {@link Task} with a description.
@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class Todo extends Task {
     /**
      * Constructs a to-do {@link Task} with the given description.
+     *
      * @param taskDescription {@code String} that represents the description of the {@link Task}.
      */
     public Todo(String taskDescription) {

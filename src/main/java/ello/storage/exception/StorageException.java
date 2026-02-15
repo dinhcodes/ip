@@ -1,8 +1,8 @@
 package ello.storage.exception;
 
-import ello.common.exception.ElloException;
-
 import java.io.IOException;
+
+import ello.common.exception.ElloException;
 
 /**
  * Exception thrown for ello.storage-related errors.

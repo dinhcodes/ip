@@ -1,27 +1,32 @@
 package ello.task.impl;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+
 import ello.command.exception.InvalidEventTimeRangeException;
 import ello.command.parser.DateTimeParser;
 import ello.task.Task;
 import ello.task.TaskType;
 
-import java.time.LocalDateTime;
-import java.util.HashMap;
-
 /**
  * Represents an event {@link Task} with a description, start time, and end time.
  */
 public class Event extends Task {
-    /** The start date/time of the event. */
+    /**
+     * The start date/time of the event.
+     */
     private final LocalDateTime from;
-    /** The end date/time of the event. */
+    /**
+     * The end date/time of the event.
+     */
     private final LocalDateTime to;
 
     /**
      * Constructs an event {@link Task} with the given description, start time, and end time.
+     *
      * @param taskDescription {@code String} that represents the description of the {@link Task}.
-     * @param from {@code LocalDateTime} that represents the start time of the event.
-     * @param to {@code LocalDateTime} that represents the end time of the event.
+     * @param from            {@code LocalDateTime} that represents the start time of the event.
+     * @param to              {@code LocalDateTime} that represents the end time of the event.
      */
     public Event(String taskDescription, LocalDateTime from, LocalDateTime to) {
         super(taskDescription);
@@ -65,6 +70,12 @@ public class Event extends Task {
         return toDateTime;
     }
 
+    private static boolean isWholeDayEvent(LocalDateTime from, LocalDateTime to) {
+        return from.toLocalDate().equals(to.toLocalDate())
+                && from.getHour() == 0 && from.getMinute() == 0
+                && to.getHour() == 0 && to.getMinute() == 0;
+    }
+
     /**
      * Gets the start date/time of the event.
      *
@@ -83,11 +94,6 @@ public class Event extends Task {
         return to;
     }
 
-    private static boolean isWholeDayEvent(LocalDateTime from, LocalDateTime to) {
-        return from.toLocalDate().equals(to.toLocalDate())
-                && from.getHour() == 0 && from.getMinute() == 0
-                && to.getHour() == 0 && to.getMinute() == 0;
-    }
     @Override
     public TaskType getTaskType() {
         return TaskType.EVENT;

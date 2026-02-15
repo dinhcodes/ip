@@ -1,24 +1,26 @@
 package ello.task.impl;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+
 import ello.command.parser.DateTimeParser;
 import ello.task.Task;
 import ello.task.TaskType;
-
-import java.time.LocalDateTime;
-import java.util.HashMap;
 
 /**
  * Represents a deadline {@link Task} with a specific due date or time.
  */
 public class Deadline extends Task {
-    /** The due date/time of the deadline. */
+    /**
+     * The due date/time of the deadline.
+     */
     private final LocalDateTime by;
 
     /**
      * Constructs a Deadline {@link Task} with the given description and due date/time.
      *
      * @param taskDescription {@code String} that represents the description of the {@link Task}
-     * @param by {@code LocalDateTime} that represents due date or time for the deadline.
+     * @param by              {@code LocalDateTime} that represents due date or time for the deadline.
      */
     public Deadline(String taskDescription, LocalDateTime by) {
         super(taskDescription);
@@ -52,7 +54,7 @@ public class Deadline extends Task {
     public TaskType getTaskType() {
         return TaskType.DEADLINE;
     }
-    
+
     @Override
     public HashMap<String, String> getMapOfMarkersAndDescription() {
         HashMap<String, String> map = new HashMap<>();

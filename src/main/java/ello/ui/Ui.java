@@ -1,8 +1,8 @@
 package ello.ui;
 
-import ello.ui.util.UiConstants;
-
 import java.util.Scanner;
+
+import ello.ui.util.UiConstants;
 
 /**
  * Represents the User Interface (UI) component of the Ello application.
@@ -13,6 +13,7 @@ public class Ui {
 
     /**
      * Reads a command from the user input.
+     *
      * @return The command entered by the user as a trimmed {@code String}.
      */
     public String readCommand() {
@@ -21,6 +22,7 @@ public class Ui {
 
     /**
      * Displays a message to the user, wrapped with lines for better readability.
+     *
      * @param message Message to be displayed
      */
     public void showMessage(String message) {
@@ -43,11 +45,12 @@ public class Ui {
 
     /**
      * Generates a message indicating the current count of tasks in the list.
+     *
      * @param count The number of tasks.
      * @return A {@code String} message indicating the task count.
      */
     public String countTasks(int count) {
-        assert(count >= 0) : "Task count should not be negative.";
+        assert (count >= 0) : "Task count should not be negative.";
         if (count == 1) {
             return "Now you have 1 Task in the list.";
         }
@@ -56,6 +59,7 @@ public class Ui {
 
     /**
      * Displays the result of loading tasks from storage.
+     *
      * @param count The number of tasks loaded.
      */
     public void showLoadResult(int count) {

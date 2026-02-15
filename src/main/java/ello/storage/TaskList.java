@@ -1,11 +1,11 @@
 package ello.storage;
 
-import ello.command.exception.TaskIndexOutOfBoundsException;
-import ello.task.Task;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import ello.command.exception.TaskIndexOutOfBoundsException;
+import ello.task.Task;
 
 /**
  * Represents a list of {@link Task}s, stored in an {@code ArrayList<Task>}.
@@ -15,6 +15,7 @@ public class TaskList {
 
     /**
      * Adds a task {@link Task} to the {@code TaskList}.
+     *
      * @param task The {@link Task}to be added.
      */
     public void add(Task task) {
@@ -23,6 +24,7 @@ public class TaskList {
 
     /**
      * Deletes a {@link Task} from the {@code TaskList} based on its zero-based index.
+     *
      * @param zeroBasedIndex The zero-based index of the {@link Task} to be deleted.
      * @throws TaskIndexOutOfBoundsException if the provided index is out of bounds.
      */
@@ -36,6 +38,7 @@ public class TaskList {
 
     /**
      * Retrieves a {@link Task} from the {@code TaskList} based on its zero-based index.
+     *
      * @param zeroBasedIndex The zero-based index of the {@link Task} to be retrieved.
      * @return The {@link Task} at the specified index.
      * @throws IndexOutOfBoundsException if the provided index is out of bounds.
@@ -71,6 +74,7 @@ public class TaskList {
 
     /**
      * Returns the number of tasks in the {@code TaskList}.
+     *
      * @return The size of the {@code TaskList}.
      */
     public int size() {

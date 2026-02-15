@@ -1,11 +1,11 @@
 package ello.service;
 
+import java.nio.file.Path;
+import java.util.List;
+
 import ello.storage.TaskList;
 import ello.storage.TasksSaverAndLoader;
 import ello.task.Task;
-
-import java.nio.file.Path;
-import java.util.List;
 
 /**
  * Service class that orchestrates {@link Task} loading and saving operations.

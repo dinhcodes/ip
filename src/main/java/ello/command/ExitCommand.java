@@ -11,7 +11,7 @@ public class ExitCommand implements Command {
      * Executes the ExitCommand by displaying a goodbye message.
      *
      * @param taskList The {@link TaskList} to operate on.
-     * @param ui The {@link Ui} for user interaction.
+     * @param ui       The {@link Ui} for user interaction.
      */
     @Override
     public void execute(TaskList taskList, Ui ui) {
