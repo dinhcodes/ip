@@ -8,7 +8,7 @@ public class InvalidCommandException extends IllegalArgumentException {
      * Constructs an {@code InvalidCommandException} with a default error message.
      */
     public InvalidCommandException() {
-        super("I'm sorry, but I don't know what that means. Type /help for help.");
+        super("I'm sorry, but I don't know what that means. Type 'help' for help.");
     }
 
     /**
