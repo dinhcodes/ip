@@ -56,7 +56,10 @@ public class TasksSaverAndLoader {
                 return new ArrayList<>();
             }
 
-            return dtos.stream().map(SerializableTask::toTask).toList();
+            return dtos
+                    .stream()
+                    .map(SerializableTask::toTask)
+                    .toList();
         } catch (IOException e) {
             throw new TaskLoadException(filePath, e);
         } catch (Exception e) {
@@ -78,7 +81,10 @@ public class TasksSaverAndLoader {
         try {
             ensureParentDirectory();
 
-            List<SerializableTask> dtos = tasks.stream().map(SerializableTask::fromTask).toList();
+            List<SerializableTask> dtos = tasks
+                    .stream()
+                    .map(SerializableTask::fromTask)
+                    .toList();
 
             String json = JsonParser.toJson(dtos);
             Files.writeString(filePath, json, StandardCharsets.UTF_8);
