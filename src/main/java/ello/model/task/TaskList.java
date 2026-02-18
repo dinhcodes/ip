@@ -19,6 +19,7 @@ public class TaskList {
      */
     public void add(Task task) {
         tasks.add(task);
+        assert tasks.contains(task) : "Task should be in list after adding";
     }
 
     /**
@@ -28,10 +29,13 @@ public class TaskList {
      * @throws TaskIndexOutOfBoundsException if the provided index is out of bounds.
      */
     public void deleteFromIndex(int zeroBasedIndex) {
+        int sizeBefore = size();
+
         if (zeroBasedIndex < 0 || zeroBasedIndex >= size()) {
             throw new TaskIndexOutOfBoundsException(zeroBasedIndex + 1);
         } else {
             tasks.remove(zeroBasedIndex);
+            assert size() == sizeBefore - 1 : "Task list size should decrease by 1 after deletion.";
         }
     }
 
