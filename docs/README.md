@@ -10,7 +10,7 @@ professional, with Ello, you can easily add, view, and manage your tasks using s
 1. Ensure you have Java 17 or above installed.
 2. Download the latest `.jar` file from [here](https://github.com/dinhcodes/ip/releases).
 3. Copy the file to an empty folder.
-4. Open a terminal, navigate to the folder, and run:
+4. Open a terminal, navigate `cd` to the folder, and run:
    ```bash
    java -jar ello.jar
     ```
@@ -271,6 +271,24 @@ Bye. Hope to see you again soon!
 
 You would also expect the application to close after this command, and all your tasks to be saved for the next time you
 open Ello.
+
+---
+
+## Command Summary
+
+| Command                                         | Description                                  |
+|-------------------------------------------------|----------------------------------------------|
+| `todo <description>`                            | Adds a todo task to the list                 |
+| `deadline <description> /by <value>`            | Adds a deadline task to the list             |
+| `event <description> /from <value> /to <value>` | Adds an event task to the list               |
+| `list`                                          | Lists all tasks                              |
+| `mark <task_number>`                            | Marks a task as done                         |
+| `unmark <task_number>`                          | Marks a task as not done                     |
+| `delete <task_number>`                          | Deletes a task from the list                 |
+| `find <keyword>`                                | Finds tasks containing the specified keyword |
+| `help`                                          | Lists all available commands                 |
+| `help <command_number>`                         | Shows detailed syntax for a specific command |
+| `bye`                                           | Exits the application & Closes the window    |
 
 ---
 
