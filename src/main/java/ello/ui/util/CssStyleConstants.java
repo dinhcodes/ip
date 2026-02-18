@@ -4,7 +4,7 @@ package ello.ui.util;
  * Contains CSS style class name constants used throughout the UI.
  * Using constants instead of string literals helps prevent typos and makes refactoring easier.
  */
-public class StyleConstants {
+public class CssStyleConstants {
     // Command-specific styles
     public static final String ADD_COMMAND_TODO = "AddCommand_todo";
     public static final String ADD_COMMAND_DEADLINE = "AddCommand_deadline";

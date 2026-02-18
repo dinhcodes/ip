@@ -45,7 +45,6 @@ public class MainWindow extends AnchorPane {
     private void loadTasksOnGui() {
         String loadStatus = logic.getLoadStatusMessage();
         ElloDialogBox welcomeBox = ElloDialogBox.create(loadStatus, elloImage);
-        welcomeBox.setCommandStyle("SystemMessage");
         dialogContainer.getChildren().add(welcomeBox);
     }
 
@@ -57,9 +56,6 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         // Validate input
         String input = userInput.getText();
-        if (input == null || input.isBlank()) {
-            return;
-        }
 
         // Process input and get response
         CommandResult result = logic.execute(input);

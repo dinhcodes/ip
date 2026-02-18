@@ -2,7 +2,7 @@ package ello.ui;
 
 import java.io.IOException;
 
-import ello.ui.util.StyleConstants;
+import ello.ui.util.CssStyleConstants;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -53,7 +53,7 @@ public abstract class DialogBox extends HBox {
     protected abstract String getFXMLPath();
 
     /**
-     * Changes the dialog style based on the command type. Each command type corresponds to a
+     * Changes the dialog CSS style based on the command type. Each command type corresponds to a
      * specific CSS class that can be defined in the application's stylesheet.
      *
      * @param commandType The type of command to determine the style to apply.
@@ -63,32 +63,32 @@ public abstract class DialogBox extends HBox {
 
         switch (commandType) {
         case "AddCommand_todo":
-            dialog.getStyleClass().add(StyleConstants.ADD_COMMAND_TODO);
+            dialog.getStyleClass().add(CssStyleConstants.ADD_COMMAND_TODO);
             break;
         case "AddCommand_deadline":
-            dialog.getStyleClass().add(StyleConstants.ADD_COMMAND_DEADLINE);
+            dialog.getStyleClass().add(CssStyleConstants.ADD_COMMAND_DEADLINE);
             break;
         case "AddCommand_event":
-            dialog.getStyleClass().add(StyleConstants.ADD_COMMAND_EVENT);
+            dialog.getStyleClass().add(CssStyleConstants.ADD_COMMAND_EVENT);
             break;
         case "ChangeMarkCommand":
-            dialog.getStyleClass().add(StyleConstants.CHANGE_MARK_COMMAND);
+            dialog.getStyleClass().add(CssStyleConstants.CHANGE_MARK_COMMAND);
             break;
         case "DeleteCommand":
-            dialog.getStyleClass().add(StyleConstants.DELETE_COMMAND);
+            dialog.getStyleClass().add(CssStyleConstants.DELETE_COMMAND);
             break;
         case "ErrorCommand":
-            dialog.getStyleClass().add(StyleConstants.ERROR_COMMAND);
-            dialogTail.getStyleClass().add(StyleConstants.ERROR_TAIL);
+            dialog.getStyleClass().add(CssStyleConstants.ERROR_COMMAND);
+            dialogTail.getStyleClass().add(CssStyleConstants.ERROR_TAIL);
             break;
         case "ListCommand":
-            dialog.getStyleClass().add(StyleConstants.LIST_COMMAND);
+            dialog.getStyleClass().add(CssStyleConstants.LIST_COMMAND);
             break;
         case "FindCommand":
-            dialog.getStyleClass().add(StyleConstants.FIND_COMMAND);
+            dialog.getStyleClass().add(CssStyleConstants.FIND_COMMAND);
             break;
         case "SystemMessage":
-            dialog.getStyleClass().add(StyleConstants.SYSTEM_MESSAGE);
+            dialog.getStyleClass().add(CssStyleConstants.SYSTEM_MESSAGE);
             break;
         default:
             // Do nothing

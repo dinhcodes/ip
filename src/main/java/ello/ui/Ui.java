@@ -7,7 +7,6 @@ import java.io.IOException;
 import ello.Ello;
 import ello.common.util.AppConstants;
 import ello.logic.Logic;
-import ello.ui.util.UiConstants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -43,44 +42,5 @@ public class Ui {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Displays a message to the user, wrapped with lines for better readability.
-     *
-     * @param message Message to be displayed
-     */
-    public void showMessage(String message) {
-        // Default implementation - can be overridden for capturing output
-    }
-
-    /**
-     * Displays a goodbye message to the user.
-     */
-    public void showGoodbye() {
-        showMessage(UiConstants.GOODBYE_MESSAGE);
-    }
-
-    /**
-     * Generates a message indicating the current count of tasks in the list.
-     *
-     * @param count The number of tasks.
-     * @return A String message indicating the task count.
-     */
-    public String countTasks(int count) {
-        assert (count >= 0) : "Task count should not be negative.";
-        if (count == 1) {
-            return "Now you have 1 Task in the list.";
-        }
-        return "Now you have " + count + " tasks in the list.";
-    }
-
-    /**
-     * Shows an error message to the user.
-     *
-     * @param errorMessage The error message to display
-     */
-    public void showError(String errorMessage) {
-        showMessage(errorMessage);
     }
 }
