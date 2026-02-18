@@ -19,7 +19,9 @@ public class DateTimeParser {
     private static final String[] DATETIME_PATTERNS = {
             "d/M/yyyy HH:mm",
             "d/M/yyyy H:mm",
-            "yyyy-MM-dd HH:mm",
+            "dd/MM/yyyy HH:mm",
+            "dd/MM/yyyy H:mm",
+            "yyyy-MM-dd HH:mm"
     };
 
     /**
@@ -28,7 +30,7 @@ public class DateTimeParser {
     private static final String[] DATE_ONLY_PATTERNS = {
             "d/M/yyyy",
             "dd/MM/yyyy",
-            "yyyy-MM-dd",
+            "yyyy-MM-dd"
     };
 
     /**
@@ -59,7 +61,7 @@ public class DateTimeParser {
      * @return Formatted string describing supported formats.
      */
     public static String getSupportedFormatsDescription() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("Supported formats:\n");
         sb.append("Date-time formats:\n");
         Arrays.stream(DATETIME_PATTERNS).forEach(pattern
                 -> sb.append("  - ").append(pattern).append("\n"));
@@ -67,17 +69,10 @@ public class DateTimeParser {
         sb.append("Date-only formats:\n");
         Arrays.stream(DATE_ONLY_PATTERNS).forEach(pattern
                 -> sb.append("  - ").append(pattern).append("\n"));
-        sb.append("\n");
+
         return sb.toString();
     }
 
-    /**
-     * Parses the input string into a {@link LocalDateTime} object.
-     *
-     * @param input The date/time string to parse.
-     * @return A LocalDateTime object representing the parsed date and time.
-     * @throws InvalidDateTimeException
-     */
     public static LocalDateTime parse(String input) throws InvalidDateTimeException {
         // Validate input
         if (input == null || input.isBlank()) {
@@ -107,12 +102,6 @@ public class DateTimeParser {
         throw new InvalidDateTimeException(input);
     }
 
-    /**
-     * Formats a {@link LocalDateTime} object into a string using the output formatter.
-     *
-     * @param dateTime The LocalDateTime to format.
-     * @return A formatted string representation of the date and time, or an empty string if the input is null.
-     */
     public static String format(LocalDateTime dateTime) {
         if (dateTime == null) {
             return "";

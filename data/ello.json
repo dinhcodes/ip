@@ -1,10 +1,8 @@
 [
   {
-    "type": "deadline",
-    "description": "this",
+    "type": "todo",
+    "description": "hello",
     "done": false,
-    "properties": {
-      "by": "2004-02-05T12:33"
-    }
+    "properties": {}
   }
 ]
