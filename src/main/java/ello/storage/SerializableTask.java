@@ -9,7 +9,7 @@ import ello.storage.util.TaskConverter;
 
 /**
  * Data Transfer Object (DTO) for serializing and deserializing {@link Task} objects.
- * Uses a generic {@code HashMap} to store fields, making it scalable.
+ * Uses a {@code HashMap} to store markers and descriptions.
  */
 public record SerializableTask(String type,
                                String description,

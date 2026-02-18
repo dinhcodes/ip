@@ -1,17 +1,14 @@
 [
   {
     "type": "todo",
-    "description": "1",
+    "description": "what",
     "done": false,
     "properties": {}
   },
   {
-    "type": "event",
-    "description": "fuck",
+    "type": "todo",
+    "description": "another thing",
     "done": false,
-    "properties": {
-      "from": "2024-01-01T00:00",
-      "to": "2025-01-01T00:00"
-    }
+    "properties": {}
   }
 ]
