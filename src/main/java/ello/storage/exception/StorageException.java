@@ -5,7 +5,7 @@ import java.io.IOException;
 import ello.common.exception.ElloException;
 
 /**
- * Exception thrown for ello.storage-related errors.
+ * Exception thrown for storage-related errors.
  */
 public class StorageException extends ElloException {
 

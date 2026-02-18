@@ -7,11 +7,12 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import ello.model.task.Task;
+import ello.model.task.TaskList;
 import ello.storage.exception.CorruptedStorageException;
 import ello.storage.exception.TaskLoadException;
 import ello.storage.exception.TaskSaveException;
 import ello.storage.util.JsonParser;
-import ello.task.Task;
 
 /**
  * Handles loading and saving tasks to a JSON file.
@@ -23,7 +24,7 @@ public class TasksSaverAndLoader {
     /**
      * Creates a new {@code TasksSaverAndLoader} with the specified file path.
      *
-     * @param filePath The path to the JSON file for ello.storage.
+     * @param filePath The path to the JSON file for storage.
      */
     public TasksSaverAndLoader(Path filePath) {
         this.filePath = filePath;

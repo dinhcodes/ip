@@ -1,25 +1,17 @@
 [
   {
     "type": "todo",
-    "description": "book",
+    "description": "1",
     "done": false,
     "properties": {}
   },
   {
-    "type": "deadline",
-    "description": "read book",
-    "done": false,
-    "properties": {
-      "by": "2004-02-05T00:00"
-    }
-  },
-  {
     "type": "event",
-    "description": "eat",
+    "description": "fuck",
     "done": false,
     "properties": {
-      "from": "1010-10-01T00:00",
-      "to": "2009-10-10T00:00"
+      "from": "2024-01-01T00:00",
+      "to": "2025-01-01T00:00"
     }
   }
 ]
