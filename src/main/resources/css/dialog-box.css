@@ -1,0 +1,81 @@
+/* User dialog styles */
+.user-label {
+    -fx-background-radius: 0.5em 0.5em 0 0.5em;
+    -fx-border-radius: 0.5em 0.5em 0 0.5em;
+    -fx-background-color: ello-primary-yellow;
+    -fx-text-fill: ello-black;
+}
+
+.user-tail {
+    -fx-fill: ello-primary-yellow;
+}
+
+/* Ello dialog styles */
+.ello-label {
+    -fx-background-radius: 0.5em 0.5em 0.5em 0;
+    -fx-border-radius: 0.5em 0.5em 0.5em 0;
+    -fx-background-color: ello-primary-blue;
+    -fx-text-fill: ello-black;
+}
+
+.ello-tail {
+    -fx-fill: ello-primary-blue;
+}
+
+/* Command-specific styles for Ello responses */
+.add-label {
+    -fx-border-color: ello-green transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+/* Specific styles for different task types */
+.AddCommand_todo {
+    -fx-border-color: white transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+.AddCommand_deadline {
+    -fx-border-color: pink transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+.AddCommand_event {
+    -fx-border-color: #CBC3E3 transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+.marked-label {
+    -fx-border-color: ello-green transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+.delete-label {
+    -fx-border-color: #ff6961 transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+.list-label {
+    -fx-border-color: orange transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+.find-label {
+    -fx-border-color: grey transparent transparent transparent;
+    -fx-border-width: 4 0 0 0;
+}
+
+/* System message style */
+.system-label {
+}
+
+/* Error message style */
+.error-label {
+    -fx-background-color: transparent;
+    -fx-border-color: red;
+    -fx-border-width: 1px;
+    -fx-text-fill: red;
+}
+
+.error-tail {
+    -fx-fill: red;
+}

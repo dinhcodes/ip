@@ -1,23 +1,48 @@
 package ello.ui;
 
-import java.util.Scanner;
+import static ello.common.util.AppConstants.appLogo;
 
+import java.io.IOException;
+
+import ello.Ello;
+import ello.common.util.AppConstants;
+import ello.logic.Logic;
 import ello.ui.util.UiConstants;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * Represents the User Interface (UI) component of the Ello application.
- * Responsible for handling user interactions, displaying messages, and reading user input.
+ * Responsible for handling message display for GUI interactions.
  */
 public class Ui {
-    private final Scanner scanner = new Scanner(System.in);
 
     /**
-     * Reads a command from the user input.
+     * Starts the UI by loading the main window and setting up the stage.
      *
-     * @return The command entered by the user as a trimmed {@code String}.
+     * @param stage The primary stage for this application.
+     * @param logic The logic component to handle command execution.
      */
-    public String readCommand() {
-        return scanner.nextLine().trim();
+    public void startUi(Stage stage, Logic logic) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Ello.class.getResource("/view/MainWindow.fxml"));
+            AnchorPane ap = fxmlLoader.load();
+
+            stage.getIcons().add(appLogo);
+            stage.setTitle(AppConstants.NAME);
+
+            Scene scene = new Scene(ap);
+            stage.setScene(scene);
+            stage.setMinHeight(417);
+            stage.setMinWidth(417);
+
+            fxmlLoader.<MainWindow>getController().setLogic(logic);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -26,14 +51,7 @@ public class Ui {
      * @param message Message to be displayed
      */
     public void showMessage(String message) {
-        System.out.println(UiConstants.wrapWithLine(message));
-    }
-
-    /**
-     * Displays a greeting message to the user.
-     */
-    public void showGreeting() {
-        showMessage(UiConstants.WELCOME_MESSAGE);
+        // Default implementation - can be overridden for capturing output
     }
 
     /**
@@ -47,7 +65,7 @@ public class Ui {
      * Generates a message indicating the current count of tasks in the list.
      *
      * @param count The number of tasks.
-     * @return A {@code String} message indicating the task count.
+     * @return A String message indicating the task count.
      */
     public String countTasks(int count) {
         assert (count >= 0) : "Task count should not be negative.";
@@ -58,17 +76,10 @@ public class Ui {
     }
 
     /**
-     * Displays the result of loading tasks from storage.
+     * Shows an error message to the user.
      *
-     * @param count The number of tasks loaded.
+     * @param errorMessage The error message to display
      */
-    public void showLoadResult(int count) {
-        if (count > 0) {
-            System.out.println("Loaded " + count + " task(s) from storage.");
-        }
-        System.out.println("No existing tasks found. Starting with an empty task list.");
-    }
-
     public void showError(String errorMessage) {
         showMessage(errorMessage);
     }
