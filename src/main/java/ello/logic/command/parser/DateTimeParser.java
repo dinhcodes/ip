@@ -19,9 +19,7 @@ public class DateTimeParser {
     private static final String[] DATETIME_PATTERNS = {
             "d/M/yyyy HH:mm",
             "d/M/yyyy H:mm",
-            "dd/MM/yyyy HH:mm",
-            "dd/MM/yyyy H:mm",
-            "yyyy-MM-dd HH:mm"
+            "yyyy-MM-dd HH:mm",
     };
 
     /**
@@ -30,7 +28,7 @@ public class DateTimeParser {
     private static final String[] DATE_ONLY_PATTERNS = {
             "d/M/yyyy",
             "dd/MM/yyyy",
-            "yyyy-MM-dd"
+            "yyyy-MM-dd",
     };
 
     /**
@@ -61,7 +59,7 @@ public class DateTimeParser {
      * @return Formatted string describing supported formats.
      */
     public static String getSupportedFormatsDescription() {
-        StringBuilder sb = new StringBuilder("Supported formats:\n");
+        StringBuilder sb = new StringBuilder();
         sb.append("Date-time formats:\n");
         Arrays.stream(DATETIME_PATTERNS).forEach(pattern
                 -> sb.append("  - ").append(pattern).append("\n"));
@@ -69,7 +67,7 @@ public class DateTimeParser {
         sb.append("Date-only formats:\n");
         Arrays.stream(DATE_ONLY_PATTERNS).forEach(pattern
                 -> sb.append("  - ").append(pattern).append("\n"));
-
+        sb.append("\n");
         return sb.toString();
     }
 
