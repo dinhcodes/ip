@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import ello.command.exception.InvalidDateTimeException;
+import ello.logic.command.exception.InvalidDateTimeException;
+import ello.logic.command.parser.DateTimeParser;
 
 class DateTimeParserTest {
     @Test
@@ -32,7 +33,8 @@ class DateTimeParserTest {
     @Test
     void format_validDateTime_returnsFormattedString() {
         LocalDateTime dt = LocalDateTime.of(2019, 12, 2, 18, 0);
-        assertEquals("Dec022019,6:00 PM", DateTimeParser.format(dt));
+        String formatted = DateTimeParser.format(dt);
+        assertEquals("Dec 02 2019, 6:00 PM", formatted);
     }
 
     @Test

@@ -1,63 +1,44 @@
 package ello;
 
-import ello.command.Command;
-import ello.command.parser.CommandParser;
-import ello.common.exception.ElloException;
 import ello.common.util.AppConstants;
-import ello.service.TaskService;
+import ello.logic.Logic;
+import ello.storage.TaskStorage;
 import ello.ui.Ui;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class Ello {
+/**
+ * The main entry point of the Ello application.
+ */
+public class Ello extends Application {
     /**
-     * The user interface component for interacting with the user.
+     * The storage component responsible for task persistence.
      */
-    private final Ui ui;
-    /**
-     * The service responsible for task management and persistence.
-     */
-    private final TaskService taskService;
+    private TaskStorage taskStorage;
 
     /**
-     * Constructs an instance of the Ello application.
+     * The UI component of the application.
      */
-    public Ello() {
+    private Ui ui;
+
+    /**
+     * The logic component that handles command execution.
+     */
+    private Logic logic;
+
+    /**
+     * Initializes the application by setting up the TaskStorage, Logic, and UI components.
+     * Loads existing tasks from storage.
+     */
+    @Override
+    public void init() {
+        this.taskStorage = new TaskStorage(AppConstants.DEFAULT_SAVE_PATH);
+        this.logic = new Logic(taskStorage);
         this.ui = new Ui();
-        this.taskService = new TaskService(AppConstants.DEFAULT_SAVE_PATH);
     }
 
-    public static void main(String[] args) {
-        new Ello().run();
-    }
-
-    private void run() {
-        loadTasks();
-        ui.showGreeting();
-        runCommandLoop();
-    }
-
-    private void loadTasks() {
-        try {
-            int count = taskService.load();
-            ui.showLoadResult(count);
-        } catch (ElloException e) {
-            ui.showError("Could not load tasks: " + e.getMessage());
-        }
-    }
-
-    private void runCommandLoop() {
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                Command command = CommandParser.parse(fullCommand);
-                command.execute(taskService.getTaskList(), ui);
-                taskService.save();
-                isExit = command.isExit();
-            } catch (ElloException e) {
-                ui.showError(e.getMessage());
-            } catch (Exception e) {
-                ui.showError("An unexpected error occurred: " + e.getMessage());
-            }
-        }
+    @Override
+    public void start(Stage stage) {
+        ui.startUi(stage, logic);
     }
 }

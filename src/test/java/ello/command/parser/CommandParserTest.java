@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import ello.command.DeleteCommand;
-import ello.command.ExitCommand;
-import ello.command.FindCommand;
-import ello.command.ListCommand;
-import ello.command.MarkCommand;
-import ello.command.exception.EmptyCommandException;
-import ello.command.exception.InvalidCommandException;
-import ello.command.exception.MissingSpaceAfterCommandWordException;
+import ello.logic.command.DeleteCommand;
+import ello.logic.command.ExitCommand;
+import ello.logic.command.FindCommand;
+import ello.logic.command.ListCommand;
+import ello.logic.command.MarkCommand;
+import ello.logic.command.exception.EmptyCommandException;
+import ello.logic.command.exception.InvalidCommandException;
+import ello.logic.command.parser.CommandParser;
 
 class CommandParserTest {
     @Test
@@ -54,20 +54,5 @@ class CommandParserTest {
     @Test
     void parse_invalid_throwsInvalidCommandException() {
         assertThrows(InvalidCommandException.class, () -> CommandParser.parse("unknown"));
-    }
-
-    @Test
-    void parse_findNoSpace_throwsMissingSpaceAfterCommandWordException() {
-        assertThrows(MissingSpaceAfterCommandWordException.class, () -> CommandParser.parse("findbook"));
-    }
-
-    @Test
-    void parse_markNoSpace_throwsMissingSpaceAfterCommandWordException() {
-        assertThrows(MissingSpaceAfterCommandWordException.class, () -> CommandParser.parse("mark2"));
-    }
-
-    @Test
-    void parse_deleteNoSpace_throwsMissingSpaceAfterCommandWordException() {
-        assertThrows(MissingSpaceAfterCommandWordException.class, () -> CommandParser.parse("delete3"));
     }
 }

@@ -3,6 +3,8 @@ package ello.common.util;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javafx.scene.image.Image;
+
 /**
  * A utility class that holds constant values used throughout the application.
  */
@@ -16,6 +18,5 @@ public class AppConstants {
      */
     public static final Path DEFAULT_SAVE_PATH = Paths.get("data", "ello.json");
 
-    private AppConstants() {
-    }
+    public static final Image appLogo = new Image(AppConstants.class.getResourceAsStream("/images/icons/logo-18px.png"));
 }

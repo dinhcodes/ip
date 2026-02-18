@@ -3,17 +3,17 @@ Hello! I'm ello.Ello
 What can I do for you?
 ____________________________________________________________
 ____________________________________________________________
-Got it. I've added this ello.task:
+Got it. I've added this ello.model:
   [T][ ] read book
-Now you have 1 ello.task in the list.
+Now you have 1 ello.model in the list.
 ____________________________________________________________
 ____________________________________________________________
-Got it. I've added this ello.task:
+Got it. I've added this ello.model:
   [D][ ] submit ip (by: tonight)
 Now you have 2 tasks in the list.
 ____________________________________________________________
 ____________________________________________________________
-Got it. I've added this ello.task:
+Got it. I've added this ello.model:
   [E][ ] project (from: monday to: tuesday)
 Now you have 3 tasks in the list.
 ____________________________________________________________
@@ -24,15 +24,15 @@ Here are the tasks in your list:
 3. [E][ ] project (from: monday to: tuesday)
 ____________________________________________________________
 ____________________________________________________________
-Nice! I've marked this ello.task as done:
+Nice! I've marked this ello.model as done:
   [D][X] submit ip (by: tonight)
 ____________________________________________________________
 ____________________________________________________________
-OK, I've marked this ello.task as not done yet:
+OK, I've marked this ello.model as not done yet:
   [D][ ] submit ip (by: tonight)
 ____________________________________________________________
 ____________________________________________________________
-Nice! I've marked this ello.task as done:
+Nice! I've marked this ello.model as done:
   [T][X] read book
 ____________________________________________________________
 ____________________________________________________________
