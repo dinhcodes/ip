@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 import com.google.gson.annotations.SerializedName;
 
+import ello.model.task.Task;
 import ello.storage.util.TaskConverter;
-import ello.task.Task;
 
 /**
  * Data Transfer Object (DTO) for serializing and deserializing {@link Task} objects.
