@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "type": "todo",
+    "description": "hello",
+    "done": false,
+    "properties": {}
+  }
+]
