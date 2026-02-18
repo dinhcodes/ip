@@ -62,36 +62,40 @@ public abstract class DialogBox extends HBox {
         assert commandType != null : "Command type should not be null";
 
         switch (commandType) {
-        case "AddCommand_todo":
+        case "add_todo":
             dialog.getStyleClass().add(CssStyleConstants.ADD_COMMAND_TODO);
             break;
-        case "AddCommand_deadline":
+        case "add_deadline":
             dialog.getStyleClass().add(CssStyleConstants.ADD_COMMAND_DEADLINE);
             break;
-        case "AddCommand_event":
+        case "add_event":
             dialog.getStyleClass().add(CssStyleConstants.ADD_COMMAND_EVENT);
             break;
-        case "ChangeMarkCommand":
+        case "change_mark":
             dialog.getStyleClass().add(CssStyleConstants.CHANGE_MARK_COMMAND);
             break;
-        case "DeleteCommand":
+        case "delete":
             dialog.getStyleClass().add(CssStyleConstants.DELETE_COMMAND);
             break;
-        case "ErrorCommand":
+        case "error":
             dialog.getStyleClass().add(CssStyleConstants.ERROR_COMMAND);
             dialogTail.getStyleClass().add(CssStyleConstants.ERROR_TAIL);
             break;
-        case "ListCommand":
+        case "list":
             dialog.getStyleClass().add(CssStyleConstants.LIST_COMMAND);
             break;
-        case "FindCommand":
+        case "find":
             dialog.getStyleClass().add(CssStyleConstants.FIND_COMMAND);
             break;
-        case "SystemMessage":
+        case "system":
             dialog.getStyleClass().add(CssStyleConstants.SYSTEM_MESSAGE);
             break;
+        case "help":
+            dialog.getStyleClass().add(CssStyleConstants.HELP_MESSAGE);
+            dialogTail.getStyleClass().add(CssStyleConstants.HELP_TAIL);
+            break;
         default:
-            // Do nothing
+            // Do nothing, use default style
         }
     }
 }

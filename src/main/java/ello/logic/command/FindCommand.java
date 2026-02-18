@@ -1,5 +1,6 @@
 package ello.logic.command;
 
+import java.util.Collections;
 import java.util.List;
 
 import ello.logic.command.exception.EmptySearchKeywordException;
@@ -10,6 +11,11 @@ import ello.model.task.TaskList;
  * Represents a command to find tasks containing a specific keyword in exact match.
  */
 public class FindCommand extends Command {
+    public static final CommandInfo COMMAND_INFO = new CommandInfo(
+            "find",
+            "Finds tasks containing the specified keyword",
+            "Syntax: find <keyword>"
+    );
     private final String searchWord;
 
     /**
@@ -18,7 +24,7 @@ public class FindCommand extends Command {
      * @param searchWord The keyword to search for in task descriptions.
      */
     public FindCommand(String searchWord) {
-        super("FindCommand");
+        super("find");
         this.searchWord = searchWord;
     }
 
@@ -58,6 +64,11 @@ public class FindCommand extends Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    @Override
+    public List<CommandInfo> getCommandInfoList() {
+        return Collections.singletonList(COMMAND_INFO);
     }
 
     private String trimmedSearchWord() {

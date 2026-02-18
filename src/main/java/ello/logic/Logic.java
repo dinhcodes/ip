@@ -36,11 +36,11 @@ public class Logic {
             taskStorage.save();
             return result;
         } catch (ElloException e) {
-            return new CommandResult(e.getMessage(), "ErrorCommand");
+            return new CommandResult(e.getMessage(), "error");
         } catch (InvalidCommandException e) {
-            return new CommandResult(e.getMessage(), "ErrorCommand");
+            return new CommandResult(e.getMessage(), "error");
         } catch (Exception e) {
-            return new CommandResult("An unexpected error occurred: " + e.getMessage(), "ErrorCommand");
+            return new CommandResult("An unexpected error occurred: " + e.getMessage(), "error");
         }
     }
 

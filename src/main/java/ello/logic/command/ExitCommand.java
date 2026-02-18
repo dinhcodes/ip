@@ -1,17 +1,25 @@
 package ello.logic.command;
 
+import java.util.Collections;
+import java.util.List;
+
 import ello.model.task.TaskList;
 
 /**
  * Represents a {@link Command} to exit the application.
  */
 public class ExitCommand extends Command {
+    public static final CommandInfo COMMAND_INFO = new CommandInfo(
+            "bye",
+            "Exits the application",
+            "Syntax: bye"
+    );
 
     /**
      * Creates an ExitCommand.
      */
     public ExitCommand() {
-        super("ExitCommand");
+        super("exit");
     }
 
     /**
@@ -29,5 +37,10 @@ public class ExitCommand extends Command {
     @Override
     public boolean isExit() {
         return true;
+    }
+
+    @Override
+    public List<CommandInfo> getCommandInfoList() {
+        return Collections.singletonList(COMMAND_INFO);
     }
 }

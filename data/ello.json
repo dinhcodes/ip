@@ -8,6 +8,18 @@
   {
     "type": "todo",
     "description": "another thing",
+    "done": true,
+    "properties": {}
+  },
+  {
+    "type": "todo",
+    "description": "3",
+    "done": true,
+    "properties": {}
+  },
+  {
+    "type": "todo",
+    "description": "3",
     "done": false,
     "properties": {}
   }

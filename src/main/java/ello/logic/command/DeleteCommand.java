@@ -1,5 +1,8 @@
 package ello.logic.command;
 
+import java.util.Collections;
+import java.util.List;
+
 import ello.logic.command.exception.TaskIndexOutOfBoundsException;
 import ello.model.task.Task;
 import ello.model.task.TaskList;
@@ -8,6 +11,12 @@ import ello.model.task.TaskList;
  * Represents a command to delete a task from the task list.
  */
 public class DeleteCommand extends Command {
+    public static final CommandInfo COMMAND_INFO = new CommandInfo(
+            "delete",
+            "Deletes a task from the list",
+            "Syntax: delete <task_number>"
+    );
+
     private final int taskIndex;
 
     /**
@@ -16,7 +25,7 @@ public class DeleteCommand extends Command {
      * @param taskIndex The zero-based index of the task to be deleted.
      */
     public DeleteCommand(int taskIndex) {
-        super("DeleteCommand");
+        super("delete");
         this.taskIndex = taskIndex;
     }
 
@@ -48,6 +57,11 @@ public class DeleteCommand extends Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    @Override
+    public List<CommandInfo> getCommandInfoList() {
+        return Collections.singletonList(COMMAND_INFO);
     }
 
     /**

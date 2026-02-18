@@ -29,23 +29,23 @@
 }
 
 /* Specific styles for different task types */
-.AddCommand_todo {
+.add-todo-label {
     -fx-border-color: white transparent transparent transparent;
     -fx-border-width: 4 0 0 0;
 }
 
-.AddCommand_deadline {
+.add-deadline-label {
     -fx-border-color: pink transparent transparent transparent;
     -fx-border-width: 4 0 0 0;
 }
 
-.AddCommand_event {
+.add-event-label {
     -fx-border-color: #CBC3E3 transparent transparent transparent;
     -fx-border-width: 4 0 0 0;
 }
 
 .marked-label {
-    -fx-border-color: ello-green transparent transparent transparent;
+    -fx-border-color: #cefad0 transparent transparent transparent;
     -fx-border-width: 4 0 0 0;
 }
 
@@ -62,6 +62,16 @@
 .find-label {
     -fx-border-color: grey transparent transparent transparent;
     -fx-border-width: 4 0 0 0;
+}
+
+/* Help message style */
+.help-label {
+    -fx-background-color: ello-grey-2;
+    -fx-text-fill: white;
+}
+
+.help-tail {
+    -fx-fill: ello-grey-2;
 }
 
 /* System message style */

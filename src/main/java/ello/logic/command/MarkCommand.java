@@ -1,5 +1,8 @@
 package ello.logic.command;
 
+import java.util.Arrays;
+import java.util.List;
+
 import ello.logic.command.exception.InvalidCommandException;
 import ello.model.task.Task;
 import ello.model.task.TaskList;
@@ -8,6 +11,19 @@ import ello.model.task.TaskList;
  * Represents a command to mark a task as done or undone in the task list.
  */
 public class MarkCommand extends Command {
+    public static final List<CommandInfo> COMMAND_INFO_LIST = Arrays.asList(
+            new CommandInfo(
+                    "mark",
+                    "Marks a task as done",
+                    "Syntax: mark <task_number>"
+            ),
+            new CommandInfo(
+                    "unmark",
+                    "Marks a task as not done",
+                    "Syntax: unmark <task_number>"
+            )
+    );
+
     private final int taskIndex;
     private final boolean isDone;
 
@@ -18,7 +34,7 @@ public class MarkCommand extends Command {
      * @param isDone    True to mark the task as done, false to mark it as undone.
      */
     public MarkCommand(int taskIndex, boolean isDone) {
-        super("ChangeMarkCommand");
+        super("change_mark");
         this.taskIndex = taskIndex;
         this.isDone = isDone;
     }
@@ -53,5 +69,10 @@ public class MarkCommand extends Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    @Override
+    public List<CommandInfo> getCommandInfoList() {
+        return COMMAND_INFO_LIST;
     }
 }

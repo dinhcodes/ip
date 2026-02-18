@@ -5,6 +5,7 @@ import ello.logic.command.Command;
 import ello.logic.command.DeleteCommand;
 import ello.logic.command.ExitCommand;
 import ello.logic.command.FindCommand;
+import ello.logic.command.HelpCommand;
 import ello.logic.command.ListCommand;
 import ello.logic.command.MarkCommand;
 import ello.logic.command.exception.EmptyCommandException;
@@ -18,11 +19,18 @@ import ello.model.task.TaskType;
 public class CommandParser {
     public static Command parse(String fullCommand) {
         String command = fullCommand.trim();
+
         if (command.equals("bye")) {
             return new ExitCommand();
         }
         if (command.equals("list")) {
             return new ListCommand();
+        }
+        if (command.equals("help")) {
+            return new HelpCommand();
+        }
+        if (command.startsWith("help ")) {
+            return parseHelpCommand(command);
         }
         if (command.startsWith("find ")) {
             String searchKeyword = command.substring(5);
@@ -41,12 +49,25 @@ public class CommandParser {
             return new DeleteCommand(oneBasedIndex);
         }
         if (isACreateTaskCommand(command)) {
+            TaskType taskType = extractTaskType(command);
             Task task = AddTaskCommandParser.validateParseAndCreateTask(command);
-            String commandWord = extractCommandWord(command);
-            return new AddTaskCommand(task, commandWord);
+            return new AddTaskCommand(task, taskType);
         }
         parseCommandErrors(command);
         return parse("");
+    }
+
+    private static Command parseHelpCommand(String command) {
+        String[] parts = command.trim().split("\\s+");
+        if (parts.length == 2) {
+            try {
+                int commandNumber = Integer.parseInt(parts[1]);
+                return new HelpCommand(commandNumber);
+            } catch (NumberFormatException e) {
+                throw new InvalidCommandException("Invalid command number for help. Please provide a valid number.");
+            }
+        }
+        throw new InvalidCommandException("Invalid help command format. Use 'help' or 'help <number>'.");
     }
 
     private static boolean isACreateTaskCommand(String command) {
@@ -71,6 +92,22 @@ public class CommandParser {
             }
         }
         return "unknown";
+    }
+
+    /**
+     * Extracts the task type from a full command string.
+     *
+     * @param command The complete command string entered by the user.
+     * @return The {@link TaskType} corresponding to the command.
+     * @throws InvalidCommandException If the task type is not recognized.
+     */
+    private static TaskType extractTaskType(String command) {
+        for (TaskType type : TaskType.values()) {
+            if (command.startsWith(type.getCommandWord())) {
+                return type;
+            }
+        }
+        throw new InvalidCommandException("Invalid task type in command: " + command);
     }
 
     // Helper method to handle parsing errors

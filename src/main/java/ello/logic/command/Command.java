@@ -1,9 +1,12 @@
 package ello.logic.command;
 
+import java.util.List;
+
 import ello.model.task.TaskList;
 
 /**
  * Represents a command that can be executed within the application.
+ * Each command must provide command information for the help system.
  */
 public abstract class Command {
     /**
@@ -43,4 +46,12 @@ public abstract class Command {
     public String getCommandType() {
         return commandTypeName;
     }
+
+    /**
+     * Gets the list of command information for this command.
+     * Most commands return a single CommandInfo, but some (like AddTaskCommand) may return multiple.
+     *
+     * @return A list of CommandInfo objects describing this command.
+     */
+    public abstract List<CommandInfo> getCommandInfoList();
 }

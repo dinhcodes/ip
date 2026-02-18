@@ -1,17 +1,50 @@
 package ello.logic.command;
 
+import java.util.Arrays;
+import java.util.List;
+
 import ello.model.task.Task;
 import ello.model.task.TaskList;
+import ello.model.task.TaskType;
 
 /**
  * Represents a command to add a task to the task list.
  */
 public class AddTaskCommand extends Command {
-    private final Task addedTask;
+    public static final List<CommandInfo> COMMAND_INFO_LIST = createCommandInfoList();
 
-    public AddTaskCommand(Task addedTask, String commandWord) {
-        super("AddCommand_" + commandWord);
-        this.addedTask = addedTask;
+    private final Task taskToAdd;
+    private final TaskType taskType;
+
+    public AddTaskCommand(Task taskToAdd, TaskType taskType) {
+        super("add_" + taskType.getCommandWord());
+        this.taskToAdd = taskToAdd;
+        this.taskType = taskType;
+    }
+
+    /**
+     * Creates a list of CommandInfo objects for the add task commands corresponding to each {@link TaskType}.
+     *
+     * @return A list of CommandInfo objects for the add task commands.
+     */
+    private static List<CommandInfo> createCommandInfoList() {
+        return Arrays.asList(
+                new CommandInfo(
+                        TaskType.TODO.getCommandWord(),
+                        "Adds a todo task to the list",
+                        TaskType.TODO.buildSyntax()
+                ),
+                new CommandInfo(
+                        TaskType.DEADLINE.getCommandWord(),
+                        "Adds a deadline task to the list",
+                        TaskType.DEADLINE.buildSyntax()
+                ),
+                new CommandInfo(
+                        TaskType.EVENT.getCommandWord(),
+                        "Adds an event task to the list",
+                        TaskType.EVENT.buildSyntax()
+                )
+        );
     }
 
     /**
@@ -22,11 +55,11 @@ public class AddTaskCommand extends Command {
      */
     @Override
     public CommandResult execute(TaskList taskList) {
-        taskList.add(addedTask);
+        taskList.add(taskToAdd);
 
         String taskCountMessage = generateTaskCountMessage(taskList.size());
         String feedback = "Got it. I've added this task:\n  "
-                + addedTask + "\n"
+                + taskToAdd + "\n"
                 + taskCountMessage;
 
         return new CommandResult(feedback, getCommandType());
@@ -37,6 +70,10 @@ public class AddTaskCommand extends Command {
         return false;
     }
 
+    @Override
+    public List<CommandInfo> getCommandInfoList() {
+        return COMMAND_INFO_LIST;
+    }
 
     /**
      * Generates a message indicating the current count of tasks in the list.
