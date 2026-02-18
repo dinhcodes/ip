@@ -44,8 +44,10 @@ public class MainWindow extends AnchorPane {
      */
     private void loadTasksOnGui() {
         String loadStatus = logic.getLoadStatusMessage();
-        ElloDialogBox welcomeBox = ElloDialogBox.create(loadStatus, elloImage);
-        dialogContainer.getChildren().add(welcomeBox);
+        ElloDialogBox loadTaskDialogBox = ElloDialogBox.create(loadStatus, elloImage);
+        ElloDialogBox promptHelpDialogBox = ElloDialogBox.create("Type 'help' to see available commands!", elloImage);
+        dialogContainer.getChildren().add(loadTaskDialogBox);
+        dialogContainer.getChildren().add(promptHelpDialogBox);
     }
 
     /**
