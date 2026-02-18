@@ -9,23 +9,26 @@ public class ElloDialogBox extends DialogBox {
 
     /**
      * Creates a new ElloDialogBox with the given text and image.
+     * Optionally accepts additional CSS style classes.
      *
-     * @param text The message text.
-     * @param img  Ello's profile image.
+     * @param text         The message text.
+     * @param img          Ello's profile image.
+     * @param styleClasses Additional CSS style classes to apply.
      */
-    public ElloDialogBox(String text, Image img) {
-        super(text, img);
+    public ElloDialogBox(String text, Image img, String... styleClasses) {
+        super(text, img, styleClasses);
     }
 
     /**
      * Factory method to create an ElloDialogBox.
      *
-     * @param text The message text.
-     * @param img  Ello's profile image.
+     * @param text         The message text.
+     * @param img          Ello's profile image.
+     * @param styleClasses Additional CSS style classes to apply.
      * @return A new ElloDialogBox instance.
      */
-    public static ElloDialogBox create(String text, Image img) {
-        return new ElloDialogBox(text, img);
+    public static ElloDialogBox create(String text, Image img, String... styleClasses) {
+        return new ElloDialogBox(text, img, styleClasses);
     }
 
     @Override

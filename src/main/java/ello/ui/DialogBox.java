@@ -21,8 +21,13 @@ public abstract class DialogBox extends HBox {
 
     /**
      * Constructor for DialogBox. Loads the FXML and sets text and image.
+     * Optionally accepts additional CSS style classes via varargs.
+     *
+     * @param text         The text to display in the dialog.
+     * @param img          The image to display.
+     * @param styleClasses Additional CSS style classes to apply to the dialog label.
      */
-    protected DialogBox(String text, Image img) {
+    protected DialogBox(String text, Image img, String... styleClasses) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(getFXMLPath()));
             fxmlLoader.setController(this);
@@ -34,6 +39,11 @@ public abstract class DialogBox extends HBox {
 
         dialog.setText(text);
         displayPicture.setImage(img);
+
+        // Apply additional style classes if provided
+        if (styleClasses.length > 0) {
+            dialog.getStyleClass().addAll(styleClasses);
+        }
     }
 
     /**

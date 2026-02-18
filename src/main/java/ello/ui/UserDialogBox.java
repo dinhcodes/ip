@@ -10,23 +10,26 @@ public class UserDialogBox extends DialogBox {
 
     /**
      * Creates a new UserDialogBox with the given text and image.
+     * Optionally accepts additional CSS style classes.
      *
-     * @param text The message text.
-     * @param img  The user's profile image.
+     * @param text         The message text.
+     * @param img          User's profile image.
+     * @param styleClasses Additional CSS style classes to apply.
      */
-    public UserDialogBox(String text, Image img) {
-        super(text, img);
+    public UserDialogBox(String text, Image img, String... styleClasses) {
+        super(text, img, styleClasses);
     }
 
     /**
      * Factory method to create a UserDialogBox.
      *
-     * @param text The message text.
-     * @param img  The user's profile image.
+     * @param text         The message text.
+     * @param img          User's profile image.
+     * @param styleClasses Additional CSS style classes to apply.
      * @return A new UserDialogBox instance.
      */
-    public static UserDialogBox create(String text, Image img) {
-        return new UserDialogBox(text, img);
+    public static UserDialogBox create(String text, Image img, String... styleClasses) {
+        return new UserDialogBox(text, img, styleClasses);
     }
 
     @Override
