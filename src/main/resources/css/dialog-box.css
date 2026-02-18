@@ -4,6 +4,7 @@
     -fx-border-radius: 0.5em 0.5em 0 0.5em;
     -fx-background-color: ello-primary-yellow;
     -fx-text-fill: ello-black;
+    -fx-wrap-text:true;
 }
 
 .user-tail {

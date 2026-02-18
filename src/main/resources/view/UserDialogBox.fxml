@@ -5,19 +5,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.SVGPath?>
-
-<fx:root alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" stylesheets="@../css/dialog-box.css" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308"
+         maxWidth="1.7976931348623157E308"
+         prefWidth="400.0" stylesheets="@../css/dialog-box.css" type="javafx.scene.layout.HBox"
+         xmlns="http://javafx.com/javafx/17">
     <children>
         <!-- Spacer to push content -->
-        <HBox HBox.hgrow="ALWAYS" />
+        <HBox HBox.hgrow="ALWAYS"/>
 
         <!-- Message bubble with tail -->
         <HBox alignment="BOTTOM_RIGHT" styleClass="user-bubble">
             <children>
-                <Label fx:id="dialog" maxWidth="400.0" minHeight="-Infinity" styleClass="user-label" text="Label"
-                       wrapText="true">
+                <Label fx:id="dialog" maxWidth="400.0" minHeight="-Infinity" styleClass="user-label"
+                       text="Label"
+                       wrapText="true" textOverrun="CLIP">
                     <padding>
-                        <Insets bottom="14.0" left="16.0" right="16.0" top="14.0" />
+                        <Insets bottom="14.0" left="16.0" right="16.0" top="14.0"/>
                     </padding>
                 </Label>
                 <SVGPath fx:id="dialogTail" content="M 5 5 L 5 15 L 15 15 Z" styleClass="user-tail"/>
@@ -27,15 +30,16 @@
         <!-- Profile picture -->
         <HBox alignment="BOTTOM_CENTER">
             <children>
-                <ImageView fx:id="displayPicture" fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="displayPicture" fitHeight="47.0" fitWidth="46.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="10.0"/>
                     </HBox.margin>
                 </ImageView>
             </children>
         </HBox>
     </children>
     <padding>
-        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
     </padding>
 </fx:root>

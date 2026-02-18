@@ -50,7 +50,10 @@ Add a task with a specific deadline.
 - `d/M/yyyy HH:mm` (e.g., 20/2/2026 16:00)
 - `dd/MM/yyyy HH:mm` (e.g., 20/02/2026 16:00)
 - `yyyy-MM-dd HH:mm` (e.g., 2026-02-20 16:00)
-- Date-only formats (time defaults to start of day): `d/M/yyyy`, `dd/MM/yyyy`, `yyyy-MM-dd`
+- Date-only formats (time defaults to start of day):
+- `d/M/yyyy` (e.g., 20/2/2026)
+- `dd/MM/yyyy` (e.g., 20/02/2026)
+- `yyyy-MM-dd` (e.g., 2026-02-20)
 
 **Example:**
 
