@@ -1,6 +1,6 @@
 package ello.ui;
 
-import static ello.common.util.AppConstants.appLogo;
+import static ello.common.util.AppConstants.APP_LOGO;
 
 import java.io.IOException;
 
@@ -29,7 +29,7 @@ public class Ui {
             FXMLLoader fxmlLoader = new FXMLLoader(Ello.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
 
-            stage.getIcons().add(appLogo);
+            stage.getIcons().add(APP_LOGO);
             stage.setTitle(AppConstants.NAME);
 
             Scene scene = new Scene(ap);

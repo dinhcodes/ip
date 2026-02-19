@@ -47,8 +47,8 @@ public class DeleteCommand extends Command {
         taskList.deleteFromIndex(taskIndex);
 
         String taskCountMessage = generateTaskCountMessage(taskList.size());
-        String feedback = "Deleted Task\n"
-                + task + "\n"
+        String feedback = "Deleted Task\n\n"
+                + task + "\n\n"
                 + taskCountMessage;
 
         return new CommandResult(feedback, getCommandType());

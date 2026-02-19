@@ -32,7 +32,7 @@ public class ElloDialogBox extends DialogBox {
     }
 
     @Override
-    protected String getFXMLPath() {
+    protected String getFxmlPath() {
         return "/view/ElloDialogBox.fxml";
     }
 

@@ -84,8 +84,8 @@ public class HelpCommand extends Command {
                     .append(info.description()).append("\n");
         }
         sb.append("\n\n");
-        sb.append("For more info, type 'help <number>' to see " +
-                "detailed syntax for each command.");
+        sb.append("For more info, type 'help <number>' to see "
+                + "detailed syntax for each command.");
 
         return sb.toString().trim();
     }
@@ -102,6 +102,6 @@ public class HelpCommand extends Command {
         }
 
         CommandInfo info = commandInfos.get(commandIndex - 1);
-        return info.commandName() + ": " + info.description() + "\n" + info.syntax();
+        return info.commandName() + ": " + info.description() + "\n\n" + info.syntax();
     }
 }

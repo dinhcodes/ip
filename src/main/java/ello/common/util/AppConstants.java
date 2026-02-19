@@ -18,5 +18,6 @@ public class AppConstants {
      */
     public static final Path DEFAULT_SAVE_PATH = Paths.get("data", "ello.json");
 
-    public static final Image appLogo = new Image(AppConstants.class.getResourceAsStream("/images/icons/logo-18px.png"));
+    public static final Image APP_LOGO =
+            new Image(AppConstants.class.getResourceAsStream("/images/icons/logo-18px.png"));
 }

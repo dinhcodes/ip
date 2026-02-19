@@ -11,8 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.SVGPath;
 
+/**
+ * Represents a dialog box in the GUI. This is an abstract class that serves as a base for specific dialog box types.
+ */
 public abstract class DialogBox extends HBox {
-
     @FXML
     protected Label dialog;
     @FXML
@@ -30,7 +32,7 @@ public abstract class DialogBox extends HBox {
      */
     protected DialogBox(String text, Image img, String... styleClasses) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(getFXMLPath()));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(getFxmlPath()));
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
@@ -50,7 +52,7 @@ public abstract class DialogBox extends HBox {
     /**
      * Abstract method to get the FXML path for each subclass.
      */
-    protected abstract String getFXMLPath();
+    protected abstract String getFxmlPath();
 
     /**
      * Changes the dialog CSS style based on the command type. Each command type corresponds to a

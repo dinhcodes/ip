@@ -17,6 +17,12 @@ import ello.model.task.TaskType;
  * Represents a utility class that parses user commands into {@link Command} objects.
  */
 public class CommandParser {
+    /**
+     * Parses a full command string entered by the user and returns the corresponding Command object.
+     *
+     * @param fullCommand The complete command string entered by the user.
+     * @return The Command object corresponding to the parsed command string.
+     */
     public static Command parse(String fullCommand) {
         String command = fullCommand.trim();
 

@@ -34,7 +34,7 @@ public class ListCommand extends Command {
         if (taskList.size() == 0) {
             feedback = "Your task list is empty.";
         } else {
-            feedback = "Here are the tasks in your list:\n" + taskList;
+            feedback = "Here are the tasks in your list:\n\n" + taskList;
         }
 
         return new CommandResult(feedback, getCommandType());

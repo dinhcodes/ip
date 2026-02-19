@@ -33,7 +33,7 @@ public class UserDialogBox extends DialogBox {
     }
 
     @Override
-    protected String getFXMLPath() {
+    protected String getFxmlPath() {
         return "/view/UserDialogBox.fxml";
     }
 }

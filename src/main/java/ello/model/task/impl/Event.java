@@ -39,7 +39,8 @@ public class Event extends Task {
      * Parses the date strings from the "/from" and "/to" markers into time and date.
      *
      * @param taskDescription {@code String} that represents the description of the {@link Task}.
-     * @param markerToDescMap {@code HashMap<String, String>} that represents markers and their corresponding descriptions.
+     * @param markerToDescMap {@code HashMap<String, String>} that represents markers
+     *                        and their corresponding descriptions.
      * @return A new {@code Event}.
      */
     public static Event create(String taskDescription, HashMap<String, String> markerToDescMap) {

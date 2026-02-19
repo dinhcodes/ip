@@ -33,16 +33,20 @@ class AddTaskCommandParserTest {
     @Test
     void processTask_Command_validDeadline_returnsDeadline() {
         Task task = assertDoesNotThrow(() ->
-                AddTaskCommandParser.validateParseAndCreateTask("deadline submit report /by 2/12/2019 18:00"));
+                AddTaskCommandParser
+                        .validateParseAndCreateTask("deadline submit report /by 2/12/2019 18:00"));
         assertNotNull(task);
-        Deadline expected = new Deadline("submit report", LocalDateTime.of(2019, 12, 2, 18, 0));
+        Deadline expected = new Deadline("submit report",
+                LocalDateTime.of(2019, 12, 2, 18, 0));
         assertEquals(expected, task);
     }
 
     @Test
     void processTask_Command_validEvent_returnsEvent() {
         Task task = assertDoesNotThrow(() ->
-                AddTaskCommandParser.validateParseAndCreateTask("event project meeting /from 2/12/2019 18:00 /to 2/12/2019 20:00"));
+                AddTaskCommandParser.validateParseAndCreateTask(
+                        "event project meeting /from 2/12/2019 18:00 /to 2/12/2019 20:00"
+                ));
         assertNotNull(task);
         Event expected = new Event("project meeting",
                 LocalDateTime.of(2019, 12, 2, 18, 0),

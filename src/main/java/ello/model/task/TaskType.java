@@ -20,7 +20,8 @@ public enum TaskType {
     private final TaskCreator taskCreator;
 
     /**
-     * Constructor for {@code TaskType} enum. Every {@code TaskType} must have a command word, markers, and a task creator.
+     * Constructor for {@code TaskType} enum. Every {@code TaskType} must have a command word, markers, and
+     * a task creator.
      *
      * @param commandWord {@code String} that represents command word for the {@link TaskType}.
      * @param markers     {@code String[]} that represents markers associated with the {@link TaskType}.

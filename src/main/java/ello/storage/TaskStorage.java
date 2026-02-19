@@ -14,6 +14,11 @@ public class TaskStorage {
     private final TaskList taskList;
     private final TasksSaverAndLoader tasksSaverAndLoader;
 
+    /**
+     * Creates a TaskStorage with the specified storage path.
+     *
+     * @param storagePath The path to the storage file for tasks.
+     */
     public TaskStorage(Path storagePath) {
         this.taskList = new TaskList();
         this.tasksSaverAndLoader = new TasksSaverAndLoader(storagePath);

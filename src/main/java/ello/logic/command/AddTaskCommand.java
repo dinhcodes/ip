@@ -16,6 +16,13 @@ public class AddTaskCommand extends Command {
     private final Task taskToAdd;
     private final TaskType taskType;
 
+    /**
+     * Constructs an AddTaskCommand with the specified task to add and its corresponding task type.
+     * The command type is generated based on the enumerated tasks in {@link TaskType}.
+     *
+     * @param taskToAdd The task to be added to the task list.
+     * @param taskType  The type of the task being added, used to generate the command type and for help information.
+     */
     public AddTaskCommand(Task taskToAdd, TaskType taskType) {
         super("add_" + taskType.getCommandWord());
         this.taskToAdd = taskToAdd;
@@ -58,8 +65,8 @@ public class AddTaskCommand extends Command {
         taskList.add(taskToAdd);
 
         String taskCountMessage = generateTaskCountMessage(taskList.size());
-        String feedback = "Got it. I've added this task:\n  "
-                + taskToAdd + "\n"
+        String feedback = "Got it. I've added this task:\n\n  "
+                + taskToAdd + "\n\n"
                 + taskCountMessage;
 
         return new CommandResult(feedback, getCommandType());

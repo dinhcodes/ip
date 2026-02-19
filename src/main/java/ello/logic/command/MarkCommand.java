@@ -51,16 +51,17 @@ public class MarkCommand extends Command {
         try {
             task = taskList.getTask(taskIndex);
         } catch (IndexOutOfBoundsException e) {
-            throw new InvalidCommandException("Task index " + (taskIndex + 1) + " out of bounds. Please provide a valid task number.");
+            throw new InvalidCommandException("Task index " + (taskIndex + 1)
+                    + " out of bounds. Please provide a valid task number.");
         }
 
         String feedback;
         if (isDone) {
             task.markAsDone();
-            feedback = "Nice! I've marked this task as done:\n  " + task;
+            feedback = "Nice! I've marked this task as done:\n\n" + task;
         } else {
             task.markAsUndone();
-            feedback = "OK, I've marked this task as not done yet:\n  " + task;
+            feedback = "OK, I've marked this task as not done yet:\n\n" + task;
         }
 
         return new CommandResult(feedback, getCommandType());
