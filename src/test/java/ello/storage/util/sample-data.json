@@ -1,0 +1,19 @@
+[
+  {
+    "type": "event",
+    "description": "event",
+    "done": false,
+    "properties": {
+      "from": "2025-01-01 00:00",
+      "to": "2025-02-02 00:00"
+    }
+  },
+  {
+    "type": "deadline",
+    "description": "deadline",
+    "done": false,
+    "properties": {
+      "by": "2025-01-01 00:00"
+    }
+  }
+]
