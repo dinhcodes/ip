@@ -54,6 +54,12 @@ public class DateTimeParser {
             DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a", java.util.Locale.ENGLISH);
 
     /**
+     * Storage formatter for serializing dates consistently.
+     */
+    private static final DateTimeFormatter STORAGE_FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+    /**
      * Returns a description of supported date/time formats.
      *
      * @return Formatted string describing supported formats.
@@ -76,7 +82,7 @@ public class DateTimeParser {
      *
      * @param input The date/time string to parse.
      * @return A LocalDateTime object representing the parsed date and time.
-     * @throws InvalidDateTimeException
+     * @throws InvalidDateTimeException If the input is invalid or does not match any supported format.
      */
     public static LocalDateTime parse(String input) throws InvalidDateTimeException {
         // Validate input
@@ -118,5 +124,19 @@ public class DateTimeParser {
             return "";
         }
         return dateTime.format(OUTPUT_FORMATTER);
+    }
+
+    /**
+     * Formats a {@link LocalDateTime} object into a string for storage.
+     * Uses a consistent format (yyyy-MM-dd HH:mm) to ensure reliable serialization and deserialization.
+     *
+     * @param dateTime The LocalDateTime to format for storage.
+     * @return A formatted string in storage format, or an empty string if the input is null.
+     */
+    public static String formatForStorage(LocalDateTime dateTime) {
+        if (dateTime == null) {
+            return "";
+        }
+        return dateTime.format(STORAGE_FORMATTER);
     }
 }

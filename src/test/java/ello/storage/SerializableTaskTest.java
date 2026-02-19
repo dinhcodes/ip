@@ -34,7 +34,9 @@ class SerializableTaskTest {
 
     @Test
     void fromTask_deadlineTask_createsCorrectSerializableTask() {
-        LocalDateTime by = LocalDateTime.of(2025, 1, 1, 0, 0, 0);
+        LocalDateTime by = LocalDateTime.of(
+                2025, 1, 1, 0, 0, 0
+        );
         Task deadline = new Deadline("Submit assignment", by);
 
         SerializableTask serializable = SerializableTask.fromTask(deadline);
@@ -43,13 +45,16 @@ class SerializableTaskTest {
         assertEquals("Submit assignment", serializable.description());
         assertFalse(serializable.done());
         // Uses consistent storage format yyyy-MM-dd HH:mm
-        assertEquals("2025-01-01 00:00", serializable.mapOfMarkersAndDescription().get("by"));
+        assertEquals("2025-01-01 00:00",
+                serializable.mapOfMarkersAndDescription().get("by"));
     }
 
     @Test
     void fromTask_eventTask_createsCorrectSerializableTask() {
-        LocalDateTime from = LocalDateTime.of(2025, 1, 1, 0, 0, 0);
-        LocalDateTime to = LocalDateTime.of(2025, 2, 2, 0, 0, 0);
+        LocalDateTime from = LocalDateTime.of(
+                2025, 1, 1, 0, 0, 0);
+        LocalDateTime to = LocalDateTime.of(
+                2025, 2, 2, 0, 0, 0);
         Task event = new Event("Team meeting", from, to);
 
         SerializableTask serializable = SerializableTask.fromTask(event);
@@ -58,14 +63,18 @@ class SerializableTaskTest {
         assertEquals("Team meeting", serializable.description());
         assertFalse(serializable.done());
         // Uses consistent storage format yyyy-MM-dd HH:mm
-        assertEquals("2025-01-01 00:00", serializable.mapOfMarkersAndDescription().get("from"));
-        assertEquals("2025-02-02 00:00", serializable.mapOfMarkersAndDescription().get("to"));
+        assertEquals("2025-01-01 00:00", serializable.mapOfMarkersAndDescription()
+                .get("from"));
+        assertEquals("2025-02-02 00:00", serializable.mapOfMarkersAndDescription()
+                .get("to"));
     }
 
     @Test
     void toTask_todoSerializableTask_createsCorrectTask() {
         HashMap<String, String> markers = new HashMap<>();
-        SerializableTask serializable = new SerializableTask("todo", "Buy groceries", true, markers);
+        SerializableTask serializable = new SerializableTask(
+                "todo", "Buy groceries", true, markers
+        );
 
         Task task = serializable.toTask();
 
@@ -78,7 +87,9 @@ class SerializableTaskTest {
     void toTask_deadlineSerializableTask_createsCorrectTask() {
         HashMap<String, String> markers = new HashMap<>();
         markers.put("by", "2025-01-01 00:00");
-        SerializableTask serializable = new SerializableTask("deadline", "Submit assignment", false, markers);
+        SerializableTask serializable = new SerializableTask(
+                "deadline", "Submit assignment", false, markers
+        );
 
         Task task = serializable.toTask();
 
@@ -94,7 +105,9 @@ class SerializableTaskTest {
         HashMap<String, String> markers = new HashMap<>();
         markers.put("from", "2025-01-01 00:00");
         markers.put("to", "2025-02-02 00:00");
-        SerializableTask serializable = new SerializableTask("event", "Team meeting", false, markers);
+        SerializableTask serializable = new SerializableTask(
+                "event", "Team meeting", false, markers
+        );
 
         Task task = serializable.toTask();
 
@@ -102,8 +115,10 @@ class SerializableTaskTest {
         assertEquals("Team meeting", task.getDescription());
         assertFalse(task.isDone());
         Event event = (Event) task;
-        assertEquals(LocalDateTime.of(2025, 1, 1, 0, 0, 0), event.getFrom());
-        assertEquals(LocalDateTime.of(2025, 2, 2, 0, 0, 0), event.getTo());
+        assertEquals(LocalDateTime.of(2025, 1, 1, 0, 0, 0),
+                event.getFrom());
+        assertEquals(LocalDateTime.of(2025, 2, 2, 0, 0, 0),
+                event.getTo());
     }
 
     @Test

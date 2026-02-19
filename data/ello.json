@@ -4,7 +4,23 @@
     "description": "this",
     "done": false,
     "properties": {
-      "by": "2004-02-05T12:33"
+      "by": "2004-02-05 12:33"
+    }
+  },
+  {
+    "type": "deadline",
+    "description": "deadline",
+    "done": false,
+    "properties": {
+      "by": "1222-12-13 12:33"
+    }
+  },
+  {
+    "type": "deadline",
+    "description": "deadline",
+    "done": true,
+    "properties": {
+      "by": "2333-02-01 00:00"
     }
   }
 ]

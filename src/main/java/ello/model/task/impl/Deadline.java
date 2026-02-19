@@ -58,7 +58,7 @@ public class Deadline extends Task {
     @Override
     public HashMap<String, String> getMapOfMarkersAndDescription() {
         HashMap<String, String> map = new HashMap<>();
-        map.put("by", by.toString());
+        map.put("by", DateTimeParser.formatForStorage(by));
         return map;
     }
 

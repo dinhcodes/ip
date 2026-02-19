@@ -103,8 +103,8 @@ public class Event extends Task {
     @Override
     public HashMap<String, String> getMapOfMarkersAndDescription() {
         HashMap<String, String> map = new HashMap<>();
-        map.put("from", from.toString());
-        map.put("to", to.toString());
+        map.put("from", DateTimeParser.formatForStorage(from));
+        map.put("to", DateTimeParser.formatForStorage(to));
         return map;
     }
 
