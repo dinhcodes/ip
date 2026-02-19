@@ -71,6 +71,13 @@ public class DateTimeParser {
         return sb.toString();
     }
 
+    /**
+     * Parses the input string into a {@link LocalDateTime} object.
+     *
+     * @param input The date/time string to parse.
+     * @return A LocalDateTime object representing the parsed date and time.
+     * @throws InvalidDateTimeException
+     */
     public static LocalDateTime parse(String input) throws InvalidDateTimeException {
         // Validate input
         if (input == null || input.isBlank()) {
@@ -100,6 +107,12 @@ public class DateTimeParser {
         throw new InvalidDateTimeException(input);
     }
 
+    /**
+     * Formats a {@link LocalDateTime} object into a string using the output formatter.
+     *
+     * @param dateTime The LocalDateTime to format.
+     * @return A formatted string representation of the date and time, or an empty string if the input is null.
+     */
     public static String format(LocalDateTime dateTime) {
         if (dateTime == null) {
             return "";
